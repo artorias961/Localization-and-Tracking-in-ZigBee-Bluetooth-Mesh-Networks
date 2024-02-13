@@ -1,0 +1,56 @@
+Notes from Research Papers
+
+
+- Relibale and Practical Bluetooth Backscatter with Commodity Devices
+	- Abstract
+		- Backscatter suffers to some reliability issues such as:
+			- Two step modulation
+			- Productive data dependency
+			- Lack of interference countermeasures
+		- To address the previous problems, the research paper sggiest a robust BLE or known as RBLE which works with many BLE devices and one BLE receiver
+		- RBLE uses BLE signals with partial single tones as excitations, making single bit modulation much more robust
+			- Single Bit Modulation refers to a method of encoding digital information into a single binary bit
+			- By utilizing BLE singals with partial single tones as excitations, the RBLE system enhances the robustness of single bit modulation
+				- Excitation refers to the process of generating a singla or stimulus that is used to activate or initiate a response in a communication system
+				- It serves as the starting point or trigger for the transmission of information
+			- The RBLE system optimizes the modulation technique and enhances the reliability of the communication link
+	- Introduction
+		- The most popular backscatter communication is the RFID technology
+			- Uses RF sources and provided connectivity to ultra low power sensors
+		- A bunch of new back scatter paradigms that work with commodity radios have been proposed recently
+			- "Commodity Radio" means off the shelf radio devices that are commonly availble in the consumer market
+		- Due to the widespread BLUETOOTH RADIOs such as the following:
+			- Smartphones
+			- Speakers
+			- Headphones
+		- Any bluetooth base backscatter sustem have received ever increating interest for embedded electronics
+		- FS backscatter can successfully demodulate backscattered BLE signals but requires hacking into a specific chip and thus is not a general solution
+			- FS Backscatter refers to Fequency Shift Backscatter is a technique used in wireless communication systems
+				- To enabled communication between devices with low power consumption
+				- It allows a device to reflect or "backscatter" an incoming radio signal from BLE transmitter while slightl shifting the frequency of the reflected signal
+				- This frequency shift encodes data that can be decoded by the receiving device
+		- Unreliable two-step modulation
+			- FreeRider
+				- is a specific backscatter system that achieves ultra low power BLE backscatter communication using commodity devices
+			- Two step modulation
+				- refers to a modulation techniue in wireless communication, including BLE
+				- Which involves a two stage process where the data to be transmitted is first converted into a binary format and then further modulated to generate the actual signal that is transmitted
+			- IT IS UNRELIABLE due to not having a target frequency rater than a bunch of frequency shift which will end up self intererence or potentiallu no solid signal in the target frequency
+		- Productive Data Dependency
+			- FreeRider has another serious issue that it requires the data sequence of exciting signals to decode the tag data
+				- Which means if the data sequence of the original channel is currupted then there is no way to succesfully decode the tag data even when the backscatter data sequence is error free
+		- Lack of Interference Countermeasure
+			- NONE BLE device based backscatter systems has provided proper countermeausure
+			- Those systems do not PERFORM WELL in the precense of overlapping channel interference cause by other wireless techologies:
+				- WiFi
+				- ZigBee
+				- Cordless Phone
+				- Microwave Oven (work on the crowded 2.4GHz ISM band)
+		- RBLE propose idea
+			- The RBLE tag modulates sensor data onto them and backscatters new BLE packets
+			- The whole system involves only commodity BLE devices and RBLE tags
+			- Prototype RBLE using TI CC2540 radios and customized tags implemented by FPGA
+
+
+- Relacks: Reliable Backsactter Communication in Indoor Environments
+	- Backscatter  links suffere from high loss due to two consecutive propagations and to operate on narrow link budget margins 

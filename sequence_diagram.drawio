@@ -1,0 +1,870 @@
+<mxfile host="65bd71144e">
+    <diagram id="SWrs_4GQzW5GuFz95Rtf" name="Overall">
+        <mxGraphModel dx="1599" dy="2014" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="Mesh Node Slave 1" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="10" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="Mesh Node Master" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="280" y="10" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="Mesh Node Slave 2" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="520" y="10" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="" style="shape=flexArrow;endArrow=classic;html=1;startArrow=none;" parent="1" source="13" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="99.80000000000001" y="100" as="sourcePoint"/>
+                        <mxPoint x="100" y="2160" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="99.80000000000001" y="190"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="6" value="" style="shape=flexArrow;endArrow=classic;html=1;startArrow=none;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="340" y="100" as="sourcePoint"/>
+                        <mxPoint x="340" y="2160" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="339.8" y="190"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="7" value="" style="shape=flexArrow;endArrow=classic;html=1;startArrow=none;" parent="1" source="15" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="579.8" y="100" as="sourcePoint"/>
+                        <mxPoint x="580" y="2160" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="579.8" y="190"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="9" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;&lt;b&gt;Sequence Diagram&lt;/b&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="227.5" y="-90" width="225" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="" style="endArrow=classic;html=1;fontSize=24;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="110" y="210" as="sourcePoint"/>
+                        <mxPoint x="330" y="210" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="17" value="Ping" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=24;" parent="11" vertex="1" connectable="0">
+                    <mxGeometry x="-0.0454" y="-1" relative="1" as="geometry">
+                        <mxPoint x="5" y="-1" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="12" value="" style="endArrow=classic;html=1;fontSize=24;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="570" y="210" as="sourcePoint"/>
+                        <mxPoint x="350" y="210" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="14" value="" style="shape=flexArrow;endArrow=none;html=1;" parent="1" target="13" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="99.79999999999995" y="100" as="sourcePoint"/>
+                        <mxPoint x="100" y="420" as="targetPoint"/>
+                        <Array as="points"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="13" value="Find the master board" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="120" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="" style="shape=flexArrow;endArrow=none;html=1;" parent="1" target="15" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="579.8" y="100" as="sourcePoint"/>
+                        <mxPoint x="580" y="420" as="targetPoint"/>
+                        <Array as="points"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="15" value="Find the master board" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="520" y="120" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="Ping" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=24;" parent="1" vertex="1" connectable="0">
+                    <mxGeometry x="460.00000000000006" y="210" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" value="Waiting for slave boards location/status" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="280" y="240" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" value="" style="endArrow=classic;html=1;fontSize=24;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="330" y="320" as="sourcePoint"/>
+                        <mxPoint x="110" y="320" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="22" value="" style="endArrow=classic;html=1;fontSize=24;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="350" y="320" as="sourcePoint"/>
+                        <mxPoint x="570" y="320" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="23" value="Ping" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=24;" parent="22" vertex="1" connectable="0">
+                    <mxGeometry x="-0.0454" y="-1" relative="1" as="geometry">
+                        <mxPoint x="5" y="-1" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="24" value="Ping" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=24;" parent="1" vertex="1" connectable="0">
+                    <mxGeometry x="480.0033333333333" y="330" as="geometry">
+                        <mxPoint x="-255" y="-13" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="25" value="BLE Receiver&lt;br&gt;(find wanted object/device)" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="520" y="370" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" value="BLE Receiver&lt;br&gt;(find wanted object/device)" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="370" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="27" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="10" y="360" as="sourcePoint"/>
+                        <mxPoint x="800" y="360" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="28" value="Offline Phase" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="740" y="330" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="29" value="Notify target device is found (does not matter which slave board found it first)" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="280" y="480" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="34" value="" style="endArrow=classic;html=1;fontSize=24;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="570" y="450" as="sourcePoint"/>
+                        <mxPoint x="350" y="450" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="35" value="Ping" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=24;" parent="1" vertex="1" connectable="0">
+                    <mxGeometry x="460.0033333333333" y="450" as="geometry"/>
+                </mxCell>
+                <mxCell id="36" value="" style="endArrow=classic;html=1;fontSize=24;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="350" y="570" as="sourcePoint"/>
+                        <mxPoint x="570" y="570" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="37" value="Ping" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=24;" parent="36" vertex="1" connectable="0">
+                    <mxGeometry x="-0.0454" y="-1" relative="1" as="geometry">
+                        <mxPoint x="5" y="-1" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="38" value="" style="endArrow=classic;html=1;fontSize=24;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="330" y="570" as="sourcePoint"/>
+                        <mxPoint x="110" y="570" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="39" value="Ping" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=24;" parent="1" vertex="1" connectable="0">
+                    <mxGeometry x="227.50333333333327" y="570" as="geometry"/>
+                </mxCell>
+                <mxCell id="41" value="BLE Emitter&lt;br&gt;(collect RSSI dataset for master board with a 1 sec time window)" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="520" y="590" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="42" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="10" y="790" as="sourcePoint"/>
+                        <mxPoint x="800" y="790" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="43" value="Pattern Recognition model training" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="740" y="760" width="110" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="44" value="RSSI Dataset: timestamp, rssi distance, occupancy, and occupants" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="280" y="680" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="45" value="BLE Emitter&lt;br&gt;(collect RSSI dataset for master board with a 1 sec time window)" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="590" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="48" value="RSSI Dataset" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="520" y="820" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="49" value="RSSI Dataset" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="820" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="50" value="" style="endArrow=classic;html=1;fontSize=24;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="110" y="910" as="sourcePoint"/>
+                        <mxPoint x="330" y="910" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="51" value="Ping" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=24;" parent="50" vertex="1" connectable="0">
+                    <mxGeometry x="-0.0454" y="-1" relative="1" as="geometry">
+                        <mxPoint x="5" y="-1" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="52" value="" style="endArrow=classic;html=1;fontSize=24;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="570" y="910" as="sourcePoint"/>
+                        <mxPoint x="350" y="910" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="53" value="Ping" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=24;" parent="1" vertex="1" connectable="0">
+                    <mxGeometry x="460.0033333333333" y="910" as="geometry"/>
+                </mxCell>
+                <mxCell id="54" value="Segmentation" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="280" y="940" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="55" value="Feature extraction" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="280" y="1030" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="56" value="RSSI features dataset" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="350" y="1120" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="57" value="RSSI Raw dataset" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="210" y="1120" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="58" value="Robust scale" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="280" y="1210" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="59" value="Regression&lt;br&gt;(seven models)" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="210" y="1300" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="60" value="Classification&amp;nbsp;&lt;br&gt;(five models)" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="350" y="1300" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="61" value="&lt;b&gt;Classification Models:&lt;br&gt;&lt;/b&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;-&amp;gt; K-Nearest Neighbor&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;-&amp;gt; Weighted KNN&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;-&amp;gt; Linear Discriminant Analysis&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;-&amp;gt; Quadratic LDA&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;-&amp;gt; Support Vector Machine&lt;/span&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="640" y="1270" width="210" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="62" value="&lt;b&gt;Regression Models:&lt;br&gt;&lt;/b&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;-&amp;gt; Gradient Boosting&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;-&amp;gt; Random Forest&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;-&amp;gt; Linear&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;-&amp;gt; Ridge&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;-&amp;gt; RANSAC&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;-&amp;gt; Bayesian&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;-&amp;gt; TheilSen&lt;/span&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="620" y="1120" width="230" height="150" as="geometry"/>
+                </mxCell>
+                <mxCell id="63" value="From each model, the whole poin of the pattern recognition model is to determine the following: sensitivity, specificity, precision, accuracy, MAE, and RMSE." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="900" y="1120" width="260" height="300" as="geometry"/>
+                </mxCell>
+                <mxCell id="64" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="10" y="1520" as="sourcePoint"/>
+                        <mxPoint x="800" y="1520" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="65" value="Online Phase (I improvise)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="722" y="1490" width="218" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="66" value="Pattern&amp;nbsp; Recognition Model" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="280" y="1550" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="67" value="Outcome evaluation&lt;br&gt;(sensitivity, specifically, precision, accuracy, RMSA, MAE)" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="280" y="1640" width="120" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="69" value="" style="endArrow=classic;html=1;fontSize=24;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="330" y="1770" as="sourcePoint"/>
+                        <mxPoint x="110" y="1770" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="70" value="" style="endArrow=classic;html=1;fontSize=24;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="350" y="1770" as="sourcePoint"/>
+                        <mxPoint x="570" y="1770" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="71" value="Ping" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=24;" parent="70" vertex="1" connectable="0">
+                    <mxGeometry x="-0.0454" y="-1" relative="1" as="geometry">
+                        <mxPoint x="5" y="-1" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="72" value="Ping" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=24;" parent="1" vertex="1" connectable="0">
+                    <mxGeometry x="227.50333333333325" y="1770" as="geometry"/>
+                </mxCell>
+                <mxCell id="73" value="Dynamic Routing&lt;br&gt;(allows to change the network topology if moving)" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="520" y="1790" width="120" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="75" value="Dynamic Routing&lt;br&gt;(allows to change the network topology if moving)" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="1790" width="120" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="76" value="Adaptive Sensing&lt;br&gt;(adjust the senitivity based on the network occupancy)" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="520" y="1890" width="120" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="77" value="Adaptive Sensing&lt;br&gt;(adjust the senitivity based on the network occupancy)" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="1890" width="120" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="78" value="" style="endArrow=classic;html=1;fontSize=24;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="570" y="2010" as="sourcePoint"/>
+                        <mxPoint x="350" y="2010" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="79" value="" style="endArrow=classic;html=1;fontSize=24;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="110" y="2010" as="sourcePoint"/>
+                        <mxPoint x="330" y="2010" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="80" value="Ping" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=24;" parent="79" vertex="1" connectable="0">
+                    <mxGeometry x="-0.0454" y="-1" relative="1" as="geometry">
+                        <mxPoint x="5" y="-1" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="81" value="Ping" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=24;" parent="1" vertex="1" connectable="0">
+                    <mxGeometry x="460.0033333333332" y="2010" as="geometry"/>
+                </mxCell>
+                <mxCell id="82" value="Pattern&amp;nbsp; Recognition Model" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="280" y="2030" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="83" value="&lt;b&gt;Reference:&amp;nbsp;&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="620" y="940" width="440" height="150" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+    <diagram id="xReRQf9MHWjW3nyDza2f" name="00 - Finding Master/Slave">
+        <mxGraphModel dx="1198" dy="1534" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="YFv0pvp0fiqOyENQFsl2-1" value="Mesh Node Slave 1" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="10" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="YFv0pvp0fiqOyENQFsl2-2" value="Mesh Node Master" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="280" y="10" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="YFv0pvp0fiqOyENQFsl2-3" value="Mesh Node Slave 2" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="520" y="10" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="YFv0pvp0fiqOyENQFsl2-4" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;&lt;b&gt;Sequence Diagram&lt;/b&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="227.5" y="-90" width="225" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="YFv0pvp0fiqOyENQFsl2-5" value="" style="endArrow=classic;html=1;fontSize=24;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="110" y="210" as="sourcePoint"/>
+                        <mxPoint x="330" y="210" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="YFv0pvp0fiqOyENQFsl2-6" value="Ping" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=24;" parent="YFv0pvp0fiqOyENQFsl2-5" vertex="1" connectable="0">
+                    <mxGeometry x="-0.0454" y="-1" relative="1" as="geometry">
+                        <mxPoint x="5" y="-1" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="YFv0pvp0fiqOyENQFsl2-7" value="" style="endArrow=classic;html=1;fontSize=24;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="570" y="210" as="sourcePoint"/>
+                        <mxPoint x="350" y="210" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="YFv0pvp0fiqOyENQFsl2-12" value="Ping" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=24;" parent="1" vertex="1" connectable="0">
+                    <mxGeometry x="460.00000000000006" y="210" as="geometry"/>
+                </mxCell>
+                <mxCell id="YFv0pvp0fiqOyENQFsl2-14" value="" style="endArrow=classic;html=1;fontSize=24;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="330" y="320" as="sourcePoint"/>
+                        <mxPoint x="110" y="320" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="YFv0pvp0fiqOyENQFsl2-15" value="" style="endArrow=classic;html=1;fontSize=24;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="350" y="320" as="sourcePoint"/>
+                        <mxPoint x="570" y="320" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="YFv0pvp0fiqOyENQFsl2-16" value="Ping" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=24;" parent="YFv0pvp0fiqOyENQFsl2-15" vertex="1" connectable="0">
+                    <mxGeometry x="-0.0454" y="-1" relative="1" as="geometry">
+                        <mxPoint x="5" y="-1" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="YFv0pvp0fiqOyENQFsl2-17" value="Ping" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=24;" parent="1" vertex="1" connectable="0">
+                    <mxGeometry x="480.0033333333333" y="330" as="geometry">
+                        <mxPoint x="-255" y="-13" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="YFv0pvp0fiqOyENQFsl2-18" value="" style="shape=flexArrow;endArrow=classic;html=1;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="99.41" y="100" as="sourcePoint"/>
+                        <mxPoint x="100" y="800" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="YFv0pvp0fiqOyENQFsl2-19" value="" style="shape=flexArrow;endArrow=classic;html=1;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="579.96" y="100" as="sourcePoint"/>
+                        <mxPoint x="580" y="800" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="YFv0pvp0fiqOyENQFsl2-20" value="Find the master board" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="520" y="120" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="YFv0pvp0fiqOyENQFsl2-21" value="Find the master board" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="120" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="fvi27HoUPck7ssh7D061-1" value="Connection Establish" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="350" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="fvi27HoUPck7ssh7D061-2" value="Connection Establish" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="520" y="350" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="fvi27HoUPck7ssh7D061-4" value="RSSI Dataset" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="440" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="fvi27HoUPck7ssh7D061-5" value="RSSI Dataset" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="520" y="440" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="fvi27HoUPck7ssh7D061-6" value="" style="shape=flexArrow;endArrow=classic;html=1;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="339.55000000000007" y="100" as="sourcePoint"/>
+                        <mxPoint x="340" y="800" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="fvi27HoUPck7ssh7D061-7" value="Waiting for slave boards location/status" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="280" y="240" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="fvi27HoUPck7ssh7D061-9" value="" style="endArrow=classic;html=1;fontSize=24;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="110" y="560" as="sourcePoint"/>
+                        <mxPoint x="330.0000000000001" y="560" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="fvi27HoUPck7ssh7D061-10" value="Ping" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=24;" parent="fvi27HoUPck7ssh7D061-9" vertex="1" connectable="0">
+                    <mxGeometry x="-0.0454" y="-1" relative="1" as="geometry">
+                        <mxPoint x="5" y="-1" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="fvi27HoUPck7ssh7D061-12" value="" style="endArrow=classic;html=1;fontSize=24;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="570" y="560" as="sourcePoint"/>
+                        <mxPoint x="350" y="560" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="fvi27HoUPck7ssh7D061-13" value="Ping" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=24;" parent="1" vertex="1" connectable="0">
+                    <mxGeometry x="460.00000000000006" y="560" as="geometry"/>
+                </mxCell>
+                <mxCell id="fvi27HoUPck7ssh7D061-14" value="Establish the range of every board and adjust sensitivity if the signal is weak" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="280" y="600" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="fvi27HoUPck7ssh7D061-15" value="Ready for next stage" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="280" y="680" width="120" height="60" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+    <diagram id="DW5TqaMOQjLgQgCBioJz" name="01 - Understanding Environment">
+        <mxGraphModel dx="1499" dy="1477" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="GXngpm9Juij9PDIBdyuA-1" value="Mesh Node Slave 1" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="-120" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="GXngpm9Juij9PDIBdyuA-2" value="Mesh Node Master" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="280" y="-120" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="GXngpm9Juij9PDIBdyuA-3" value="Mesh Node Slave 2" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="520" y="-120" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="GXngpm9Juij9PDIBdyuA-4" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;&lt;b&gt;Sequence Diagram&lt;/b&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="227.5" y="-220" width="225" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="GXngpm9Juij9PDIBdyuA-5" value="" style="endArrow=classic;html=1;fontSize=24;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="110" y="210" as="sourcePoint"/>
+                        <mxPoint x="330" y="210" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="GXngpm9Juij9PDIBdyuA-6" value="Ping" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=24;" parent="GXngpm9Juij9PDIBdyuA-5" vertex="1" connectable="0">
+                    <mxGeometry x="-0.0454" y="-1" relative="1" as="geometry">
+                        <mxPoint x="5" y="-1" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="GXngpm9Juij9PDIBdyuA-7" value="" style="endArrow=classic;html=1;fontSize=24;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="570" y="210" as="sourcePoint"/>
+                        <mxPoint x="350" y="210" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="GXngpm9Juij9PDIBdyuA-8" value="Ping" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=24;" parent="1" vertex="1" connectable="0">
+                    <mxGeometry x="460.00000000000006" y="210" as="geometry"/>
+                </mxCell>
+                <mxCell id="GXngpm9Juij9PDIBdyuA-9" value="" style="endArrow=classic;html=1;fontSize=24;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="330" y="320" as="sourcePoint"/>
+                        <mxPoint x="110" y="320" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="GXngpm9Juij9PDIBdyuA-10" value="" style="endArrow=classic;html=1;fontSize=24;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="350" y="320" as="sourcePoint"/>
+                        <mxPoint x="570" y="320" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="GXngpm9Juij9PDIBdyuA-11" value="Ping" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=24;" parent="GXngpm9Juij9PDIBdyuA-10" vertex="1" connectable="0">
+                    <mxGeometry x="-0.0454" y="-1" relative="1" as="geometry">
+                        <mxPoint x="5" y="-1" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="GXngpm9Juij9PDIBdyuA-12" value="Ping" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=24;" parent="1" vertex="1" connectable="0">
+                    <mxGeometry x="480.0033333333333" y="330" as="geometry">
+                        <mxPoint x="-255" y="-13" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="GXngpm9Juij9PDIBdyuA-13" value="" style="shape=flexArrow;endArrow=classic;html=1;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="100" y="-30" as="sourcePoint"/>
+                        <mxPoint x="100" y="720" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="GXngpm9Juij9PDIBdyuA-14" value="" style="shape=flexArrow;endArrow=classic;html=1;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="580" y="-30" as="sourcePoint"/>
+                        <mxPoint x="580" y="720" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="GXngpm9Juij9PDIBdyuA-15" value="Wifi Receiver (find wanted object/device)" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="590" y="120" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="GXngpm9Juij9PDIBdyuA-16" value="BLE Receiver&lt;br&gt;(find wanted object/device)" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-30" y="120" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="GXngpm9Juij9PDIBdyuA-17" value="Check BLE Reciever again (RSSI Dataset)" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-30" y="350" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="GXngpm9Juij9PDIBdyuA-18" value="Check BLE Receiver again (RSSI Dataset)" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="452.5" y="350" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="GXngpm9Juij9PDIBdyuA-19" value="Check Wifi Receiver again (RSSI Dataset)" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="107.5" y="350" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="GXngpm9Juij9PDIBdyuA-20" value="Check Wifi Receiver again (RSSI Dataset)" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="590" y="350" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="GXngpm9Juij9PDIBdyuA-21" value="" style="shape=flexArrow;endArrow=classic;html=1;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="340" y="-30" as="sourcePoint"/>
+                        <mxPoint x="340" y="720" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="GXngpm9Juij9PDIBdyuA-22" value="Gather information from the slave boards information (occupant counter)" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="280" y="240" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="GXngpm9Juij9PDIBdyuA-23" value="" style="endArrow=classic;html=1;fontSize=24;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="117.5" y="460" as="sourcePoint"/>
+                        <mxPoint x="337.5" y="460" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="GXngpm9Juij9PDIBdyuA-24" value="Ping" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=24;" parent="GXngpm9Juij9PDIBdyuA-23" vertex="1" connectable="0">
+                    <mxGeometry x="-0.0454" y="-1" relative="1" as="geometry">
+                        <mxPoint x="5" y="-1" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="GXngpm9Juij9PDIBdyuA-25" value="" style="endArrow=classic;html=1;fontSize=24;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="572.5" y="460" as="sourcePoint"/>
+                        <mxPoint x="352.5" y="460" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="GXngpm9Juij9PDIBdyuA-26" value="Ping" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=24;" parent="1" vertex="1" connectable="0">
+                    <mxGeometry x="460.00000000000006" y="460" as="geometry"/>
+                </mxCell>
+                <mxCell id="GXngpm9Juij9PDIBdyuA-27" value="CSI Dataset:" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="280" y="490" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="J0eiL0URU3DiKil3RR3G-1" value="BLE Receiver&lt;br&gt;(find wanted object/device)" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="452.5" y="120" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="J0eiL0URU3DiKil3RR3G-2" value="Wifi Receiver (find wanted object/device)" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="107.5" y="120" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="4C8urvxZVCYEfX7II1U1-1" value="What happen if the user phone disable there Bluetooth? How would you detect them? Ans - Wifi" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="770" y="150" width="380" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="sgPfu8k-aYWwf0iPNyc3-1" value="Tell slave boards to find local occupants" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="280" y="-10" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="sgPfu8k-aYWwf0iPNyc3-3" value="" style="endArrow=classic;html=1;fontSize=24;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="327.5" y="80" as="sourcePoint"/>
+                        <mxPoint x="107.5" y="80" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="sgPfu8k-aYWwf0iPNyc3-4" value="" style="endArrow=classic;html=1;fontSize=24;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="350" y="80" as="sourcePoint"/>
+                        <mxPoint x="570" y="80" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="sgPfu8k-aYWwf0iPNyc3-5" value="Ping" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=24;" parent="sgPfu8k-aYWwf0iPNyc3-4" vertex="1" connectable="0">
+                    <mxGeometry x="-0.0454" y="-1" relative="1" as="geometry">
+                        <mxPoint x="5" y="-1" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="sgPfu8k-aYWwf0iPNyc3-6" value="Ping" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=24;" parent="1" vertex="1" connectable="0">
+                    <mxGeometry x="227.49555555555565" y="210" as="geometry">
+                        <mxPoint x="-11" y="-127" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="_gnHWsKeQawICJVok4Vb-1" value="RSSI Dataset: timestamp, rssi distance, occupancy, and occupants" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="280" y="570" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="ABIiGQXa8QxbwLAaIfzB-1" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;BLE will first detect the current occupants then use wifi. If the RSSI reletively the same distance (about 5% difference is signal strength then the are the same person)&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="760" y="10" width="370" height="170" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+    <diagram id="LaDC0V7wXjmPH5QAJmO1" name="02 - Creating the Dataset (Usable)">
+        <mxGraphModel dx="826" dy="1399" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="zD3oNpqbKSPpl6M3JqKy-1" value="Mesh Node Slave 1" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="-120" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="zD3oNpqbKSPpl6M3JqKy-2" value="Mesh Node Master" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="280" y="-120" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="zD3oNpqbKSPpl6M3JqKy-3" value="Mesh Node Slave 2" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="520" y="-120" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="zD3oNpqbKSPpl6M3JqKy-4" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;&lt;b&gt;Sequence Diagram&lt;/b&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="227.5" y="-220" width="225" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="zD3oNpqbKSPpl6M3JqKy-13" value="" style="shape=flexArrow;endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="99.99999999999977" y="-30" as="sourcePoint"/>
+                        <mxPoint x="100" y="520" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="zD3oNpqbKSPpl6M3JqKy-14" value="" style="shape=flexArrow;endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="580" y="-30" as="sourcePoint"/>
+                        <mxPoint x="580" y="520" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="zD3oNpqbKSPpl6M3JqKy-18" value="Classification&amp;nbsp;&lt;br&gt;(five models)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="350" y="320" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="zD3oNpqbKSPpl6M3JqKy-21" value="" style="shape=flexArrow;endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="340" y="-30" as="sourcePoint"/>
+                        <mxPoint x="340" y="520" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="zD3oNpqbKSPpl6M3JqKy-22" value="Gather information from the slave boards information (occupant counter)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="280" y="200" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="zD3oNpqbKSPpl6M3JqKy-27" value="Regression&lt;br&gt;(seven models)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="210" y="320" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="zD3oNpqbKSPpl6M3JqKy-31" value="RSSI Feature Dataset" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="350" y="-10" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="yXx1a09KIFq5NODM49Nd-1" value="RSSI Raw Dataset" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="210" y="-10" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="VfmvMOb50mTovecCFMoE-1" value="RSSI Feature Dataset invovles transforming the raw data into a set of relevant/useful features" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;" vertex="1" parent="1">
+                    <mxGeometry x="780" y="-10" width="380" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="qkjl0VCZQV6QwAuex1PC-1" value="Robust Scaling (Standardizing datasets)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="280" y="90" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="t4xscJElqU02vB7FBUgN-1" value="&lt;b&gt;Classification Models:&lt;br&gt;&lt;/b&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;-&amp;gt; K-Nearest Neighbor&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;-&amp;gt; Weighted KNN&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;-&amp;gt; Linear Discriminant Analysis&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;-&amp;gt; Quadratic LDA&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;-&amp;gt; Support Vector Machine&lt;/span&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="790" y="280" width="210" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="t4xscJElqU02vB7FBUgN-2" value="&lt;b&gt;Regression Models:&lt;br&gt;&lt;/b&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;-&amp;gt; Gradient Boosting&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;-&amp;gt; Random Forest&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;-&amp;gt; Linear&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;-&amp;gt; Ridge&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;-&amp;gt; RANSAC&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;-&amp;gt; Bayesian&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;-&amp;gt; TheilSen&lt;/span&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="770" y="130" width="230" height="150" as="geometry"/>
+                </mxCell>
+                <mxCell id="t4xscJElqU02vB7FBUgN-3" value="From each model, the whole poin of the pattern recognition model is to determine the following: sensitivity, specificity, precision, accuracy, MAE, and RMSE." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="1050" y="130" width="260" height="300" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+    <diagram id="lu41cxEPx5nW6RGNC94u" name="03 - Pattern Recognition Model Training">
+        <mxGraphModel dx="622" dy="1462" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="gK-nESDLd2JaYNMmhdCZ-1" value="Mesh Node Slave 1" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="-120" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="gK-nESDLd2JaYNMmhdCZ-2" value="Mesh Node Master" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="280" y="-120" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="gK-nESDLd2JaYNMmhdCZ-3" value="Mesh Node Slave 2" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="520" y="-120" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="gK-nESDLd2JaYNMmhdCZ-4" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;&lt;b&gt;Sequence Diagram&lt;/b&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="227.5" y="-220" width="225" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="gK-nESDLd2JaYNMmhdCZ-5" value="" style="shape=flexArrow;endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="99.99999999999977" y="-30" as="sourcePoint"/>
+                        <mxPoint x="100" y="520" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="gK-nESDLd2JaYNMmhdCZ-6" value="" style="shape=flexArrow;endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="580" y="-30" as="sourcePoint"/>
+                        <mxPoint x="580" y="520" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="gK-nESDLd2JaYNMmhdCZ-8" value="" style="shape=flexArrow;endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="340" y="-30" as="sourcePoint"/>
+                        <mxPoint x="340" y="1110" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="gK-nESDLd2JaYNMmhdCZ-12" value="Gradient Boosting" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="280" y="50" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="HKocTOM1UOz6hRBN_plr-1" value="&lt;b&gt;Classification Models:&lt;br&gt;&lt;/b&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;-&amp;gt; K-Nearest Neighbor&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;-&amp;gt; Weighted KNN&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;-&amp;gt; Linear Discriminant Analysis&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;-&amp;gt; Quadratic LDA&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;-&amp;gt; Support Vector Machine&lt;/span&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="630" y="200" width="210" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="HKocTOM1UOz6hRBN_plr-2" value="&lt;b&gt;Regression Models:&lt;br&gt;&lt;/b&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;-&amp;gt; Gradient Boosting&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;-&amp;gt; Random Forest&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;-&amp;gt; Linear&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;-&amp;gt; Ridge&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;-&amp;gt; RANSAC&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;-&amp;gt; Bayesian&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;-&amp;gt; TheilSen&lt;/span&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="610" y="50" width="230" height="150" as="geometry"/>
+                </mxCell>
+                <mxCell id="HKocTOM1UOz6hRBN_plr-3" value="From each model, the whole poin of the pattern recognition model is to determine the following: sensitivity, specificity, precision, accuracy, MAE, and RMSE." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="890" y="50" width="260" height="300" as="geometry"/>
+                </mxCell>
+                <mxCell id="HKocTOM1UOz6hRBN_plr-7" value="Random Forest" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="280" y="130" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="HKocTOM1UOz6hRBN_plr-8" value="Linear" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="280" y="210" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="HKocTOM1UOz6hRBN_plr-9" value="Ridge" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="280" y="290" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="HKocTOM1UOz6hRBN_plr-10" value="RANSAC" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="280" y="370" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="HKocTOM1UOz6hRBN_plr-11" value="Bayesian" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="280" y="450" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="HKocTOM1UOz6hRBN_plr-12" value="TheilSen" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="280" y="530" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="HKocTOM1UOz6hRBN_plr-13" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=8;fontSize=18;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="280" y="10" as="sourcePoint"/>
+                        <mxPoint x="850" y="10" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="HKocTOM1UOz6hRBN_plr-14" value="Regression Models" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;" vertex="1" parent="1">
+                    <mxGeometry x="770" y="-40" width="170" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="HKocTOM1UOz6hRBN_plr-15" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=8;fontSize=18;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="280" y="640.0000000000002" as="sourcePoint"/>
+                        <mxPoint x="850" y="640.0000000000002" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="HKocTOM1UOz6hRBN_plr-16" value="Classification Models" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;" vertex="1" parent="1">
+                    <mxGeometry x="770" y="590" width="230" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="HKocTOM1UOz6hRBN_plr-17" value="K-Nearest Neighbot" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="280" y="680" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="HKocTOM1UOz6hRBN_plr-18" value="Weighted KNN" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="280" y="760" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="HKocTOM1UOz6hRBN_plr-19" value="Suport Vector Machine" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="280" y="1000" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="HKocTOM1UOz6hRBN_plr-20" value="Quadratic LDA" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="280" y="920" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="HKocTOM1UOz6hRBN_plr-21" value="Linear Discriminant Analysis" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="280" y="840" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="HKocTOM1UOz6hRBN_plr-22" value="Need to figure what settins the paper had to replicate the same result. Also this has to meet a 2 second window (it did not specifid for training or)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;" vertex="1" parent="1">
+                    <mxGeometry x="700" y="710" width="470" height="280" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+    <diagram id="A1UemmyPXuEfYqGhw2xY" name="04 - Occupant Detect Phase">
+        <mxGraphModel dx="995" dy="-521" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="vQQDSfz2QBfyp_GCK6TW-3" value="" style="endArrow=classic;html=1;fontSize=24;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="330" y="1770" as="sourcePoint"/>
+                        <mxPoint x="110" y="1770" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="vQQDSfz2QBfyp_GCK6TW-4" value="" style="endArrow=classic;html=1;fontSize=24;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="350" y="1770" as="sourcePoint"/>
+                        <mxPoint x="570" y="1770" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="vQQDSfz2QBfyp_GCK6TW-5" value="Ping" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=24;" vertex="1" connectable="0" parent="vQQDSfz2QBfyp_GCK6TW-4">
+                    <mxGeometry x="-0.0454" y="-1" relative="1" as="geometry">
+                        <mxPoint x="5" y="-1" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="vQQDSfz2QBfyp_GCK6TW-6" value="Ping" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=24;" vertex="1" connectable="0" parent="1">
+                    <mxGeometry x="227.50333333333325" y="1770" as="geometry"/>
+                </mxCell>
+                <mxCell id="vQQDSfz2QBfyp_GCK6TW-11" value="" style="endArrow=classic;html=1;fontSize=24;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="570" y="2010" as="sourcePoint"/>
+                        <mxPoint x="350" y="2010" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="vQQDSfz2QBfyp_GCK6TW-12" value="" style="endArrow=classic;html=1;fontSize=24;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="110" y="2010" as="sourcePoint"/>
+                        <mxPoint x="330" y="2010" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="vQQDSfz2QBfyp_GCK6TW-13" value="Ping" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=24;" vertex="1" connectable="0" parent="vQQDSfz2QBfyp_GCK6TW-12">
+                    <mxGeometry x="-0.0454" y="-1" relative="1" as="geometry">
+                        <mxPoint x="5" y="-1" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="vQQDSfz2QBfyp_GCK6TW-14" value="Ping" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=24;" vertex="1" connectable="0" parent="1">
+                    <mxGeometry x="460.0033333333332" y="2010" as="geometry"/>
+                </mxCell>
+                <mxCell id="nm_uBhgG1VXXZkTT7ftp-1" value="Mesh Node Slave 1" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="1300" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="nm_uBhgG1VXXZkTT7ftp-2" value="Mesh Node Master" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="280" y="1300" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="nm_uBhgG1VXXZkTT7ftp-3" value="Mesh Node Slave 2" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="520" y="1300" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="nm_uBhgG1VXXZkTT7ftp-4" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;&lt;b&gt;Sequence Diagram&lt;/b&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="227.5" y="1200" width="225" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="eTOjm-O6wQNrFuY6q4_P-1" value="" style="shape=flexArrow;endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="99.49999999999977" y="1410.0000000000002" as="sourcePoint"/>
+                        <mxPoint x="100" y="2160" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="eTOjm-O6wQNrFuY6q4_P-2" value="" style="shape=flexArrow;endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="579.4999999999998" y="1410.0000000000002" as="sourcePoint"/>
+                        <mxPoint x="580" y="2160" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="eTOjm-O6wQNrFuY6q4_P-3" value="" style="shape=flexArrow;endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="339.4999999999998" y="1410.0000000000002" as="sourcePoint"/>
+                        <mxPoint x="340" y="2160" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="eTOjm-O6wQNrFuY6q4_P-4" value="Dynamic Routing&lt;br&gt;(allows to change the network topology if moving)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="520" y="1790" width="120" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="eTOjm-O6wQNrFuY6q4_P-5" value="Adaptive Sensing&lt;br&gt;(adjust the senitivity based on the network occupancy)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="520" y="1890" width="120" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="eTOjm-O6wQNrFuY6q4_P-6" value="Adaptive Sensing&lt;br&gt;(adjust the senitivity based on the network occupancy)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="1890" width="120" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="eTOjm-O6wQNrFuY6q4_P-7" value="Dynamic Routing&lt;br&gt;(allows to change the network topology if moving)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="1790" width="120" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="eTOjm-O6wQNrFuY6q4_P-8" value="Pattern&amp;nbsp; Recognition Model" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="280" y="2030" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="eTOjm-O6wQNrFuY6q4_P-9" value="Outcome evaluation&lt;br&gt;(sensitivity, specifically, precision, accuracy, RMSA, MAE)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="280" y="1640" width="120" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="eTOjm-O6wQNrFuY6q4_P-10" value="Pattern&amp;nbsp; Recognition Model" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="280" y="1550" width="120" height="60" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
