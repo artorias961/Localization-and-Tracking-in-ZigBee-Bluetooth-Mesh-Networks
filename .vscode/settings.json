@@ -1,0 +1,8 @@
+{
+    "nrf-connect.applications": [
+        "${workspaceFolder}\\onoff-app",
+        "${workspaceFolder}\\sensor_server",
+        "${workspaceFolder}\\zigbee\\network_coordinator"
+    ],
+    "esbonio.sphinx.confDir": ""
+}

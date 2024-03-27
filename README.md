@@ -34,3 +34,8 @@
   - Determine the target device at moderate speed
   - Determine the target device at high speed
   - Learn how to use other people devices as nodes to find the target device
+
+
+# References
+- Bluetooth
+   - [Bluetooth Protocols](https://docs.zephyrproject.org/latest/connectivity/bluetooth/bluetooth-arch.html)

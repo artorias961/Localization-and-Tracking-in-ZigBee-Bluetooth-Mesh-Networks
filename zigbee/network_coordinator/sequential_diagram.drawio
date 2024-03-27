@@ -1,0 +1,211 @@
+<mxfile host="65bd71144e">
+    <diagram id="jSfX7yUsPPDs-em1Izeg" name="Page-1">
+        <mxGraphModel dx="1292" dy="1622" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="" style="shape=flexArrow;endArrow=classic;html=1;width=18.6046511627907;endSize=7.58139534883721;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="200" as="sourcePoint"/>
+                        <mxPoint x="200" y="2200" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="200" y="640"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="7" value="Router Board" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="120" y="-120" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="Coordinator Board" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="320" y="-120" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="" style="shape=flexArrow;endArrow=classic;html=1;width=18.6046511627907;endSize=7.58139534883721;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="399.76999999999987" as="sourcePoint"/>
+                        <mxPoint x="400" y="2200" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="399.77" y="640"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="10" value="" style="shape=flexArrow;endArrow=classic;html=1;width=18.6046511627907;endSize=7.58139534883721;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="599.7699999999999" as="sourcePoint"/>
+                        <mxPoint x="600" y="2200" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="599.77" y="640"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="11" value="Router Board" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="520" y="-120" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="Initializes Zigbee Network" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="320" y="30" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="Searches for routers to establish network mesh" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="320" y="140" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="Configure the network parameters (selecting zigbee channel [2.4], PAN ID, Netwrok Security, Network Topology, keep live intervals, and routing tables)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="320" y="250" width="160" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="Searches for routers to establish network mesh" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="320" y="380" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="Searches for zigbee coordinator" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="520" y="490" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="Searches for zigbee coordinator" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="120" y="490" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="Send RSSI Data to Coordinator" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="520" y="600" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" value="Send RSSI Data to Coordinator" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="120" y="600" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" value="Estimating distance based on RSSI (Signal Attenuation, calibration [environmental factors], and algorithmic estimation)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="320" y="770" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="22" value="" style="endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="210" y="740" as="sourcePoint"/>
+                        <mxPoint x="390" y="740" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="24" value="RSSI Data" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="22">
+                    <mxGeometry x="-0.0851" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="23" value="" style="endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="590" y="740" as="sourcePoint"/>
+                        <mxPoint x="410" y="740" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="25" value="RSSI Data" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="23">
+                    <mxGeometry x="-0.0704" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="26" value="Segmentation" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="320" y="880" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="27" value="feature extraction" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="320" y="990" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="28" value="We still gonna do the machine learning stuff but i found Time of Flight and Angle of Arrival method. Pretty mych mesaures the time it takes for a signal to travel from transmitter to th receiver.&lt;br&gt;&lt;br&gt;Another way we can be different is becoming a beacon and active report. Where we measure RSSI but actively get report of the occupant." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="680" y="870" width="180" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="29" value="RSSI Raw Dataset" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="230" y="1100" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="30" value="RSSI Feature Dataset" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="410" y="1100" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="31" value="Robust Scale" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="320" y="1210" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="32" value="Classification&lt;br&gt;(five models)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="410" y="1320" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="33" value="Regression&lt;br&gt;(Seven models)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="230" y="1320" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="34" value="&lt;b&gt;Classification Models:&lt;br&gt;&lt;/b&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;-&amp;gt; K-Nearest Neighbor&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;-&amp;gt; Weighted KNN&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;-&amp;gt; Linear Discriminant Analysis&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;-&amp;gt; Quadratic LDA&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;-&amp;gt; Support Vector Machine&lt;/span&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="950" y="1180" width="210" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="35" value="&lt;b&gt;Regression Models:&lt;br&gt;&lt;/b&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;-&amp;gt; Gradient Boosting&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;-&amp;gt; Random Forest&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;-&amp;gt; Linear&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;-&amp;gt; Ridge&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;-&amp;gt; RANSAC&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;-&amp;gt; Bayesian&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;-&amp;gt; TheilSen&lt;/span&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="920" y="1020" width="230" height="150" as="geometry"/>
+                </mxCell>
+                <mxCell id="36" value="From each model, the whole poin of the pattern recognition model is to determine the following: sensitivity, specificity, precision, accuracy, MAE, and RMSE." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="1170" y="1010" width="260" height="300" as="geometry"/>
+                </mxCell>
+                <mxCell id="37" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint y="710" as="sourcePoint"/>
+                        <mxPoint x="790" y="710" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="38" value="&lt;b&gt;Pattern Recognition model training&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="730" y="660" width="130" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="39" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="5" y="1430" as="sourcePoint"/>
+                        <mxPoint x="795" y="1430" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="40" value="&lt;b&gt;Online Phase&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="690" y="1380" width="130" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="41" value="Pattern Recognition&lt;br&gt;Model" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="320" y="1460" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="42" value="Outcome evaluation (Sensitivity, specifically, precision, accurarcy, RMSA, MAE)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="320" y="1570" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="43" value="Dynamic Routing &lt;br&gt;(allows to change the network topology if moving)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="520" y="1710" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="44" value="" style="endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="410" y="1680" as="sourcePoint"/>
+                        <mxPoint x="590" y="1680" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="45" value="RSSI Data" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="44">
+                    <mxGeometry x="-0.0851" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="46" value="" style="endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="390" y="1680" as="sourcePoint"/>
+                        <mxPoint x="210" y="1680" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="47" value="RSSI Data" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="46">
+                    <mxGeometry x="-0.0704" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="48" value="Adaptive Sensing &lt;br&gt;(adjust the sensitivity based on the network occupancy)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="520" y="1820" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="49" value="Dynamic Routing &lt;br&gt;(allows to change the network topology if moving)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="120" y="1710" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="50" value="Adaptive Sensing &lt;br&gt;(adjust the sensitivity based on the network occupancy)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="120" y="1820" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="51" value="Pattern Reconition Model" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="320" y="1970" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="52" value="" style="endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="210" y="1930" as="sourcePoint"/>
+                        <mxPoint x="390" y="1930" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="53" value="Ping" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="52">
+                    <mxGeometry x="-0.0851" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="54" value="" style="endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="590" y="1930" as="sourcePoint"/>
+                        <mxPoint x="410" y="1930" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="55" value="Ping" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="54">
+                    <mxGeometry x="-0.0704" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
