@@ -69,6 +69,11 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
+  include("C:/Users/artorias961/Desktop/Notas/Project/Thesis/zigbee/network_coordinator/build/zephyr/drivers/bluetooth/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
   include("C:/Users/artorias961/Desktop/Notas/Project/Thesis/zigbee/network_coordinator/build/zephyr/drivers/clock_control/cmake_install.cmake")
 endif()
 
@@ -84,6 +89,11 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
+  include("C:/Users/artorias961/Desktop/Notas/Project/Thesis/zigbee/network_coordinator/build/zephyr/drivers/crypto/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
   include("C:/Users/artorias961/Desktop/Notas/Project/Thesis/zigbee/network_coordinator/build/zephyr/drivers/entropy/cmake_install.cmake")
 endif()
 
@@ -95,6 +105,11 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
   include("C:/Users/artorias961/Desktop/Notas/Project/Thesis/zigbee/network_coordinator/build/zephyr/drivers/gpio/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("C:/Users/artorias961/Desktop/Notas/Project/Thesis/zigbee/network_coordinator/build/zephyr/drivers/i2c/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)

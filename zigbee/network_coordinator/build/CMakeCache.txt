@@ -57,7 +57,7 @@ CACHED_BOARD:STRING=nrf5340dk_nrf5340_cpuapp
 // listed, e.g. CONF_FILE="prj1.conf;prj2.conf" The CACHED_CONF_FILE
 // is internal Zephyr variable used between CMake runs. To change
 // CONF_FILE, use the CONF_FILE variable.
-CACHED_CONF_FILE:STRING=c:/Users/artorias961/Desktop/Notas/Project/Thesis/zigbee/network_coordinator/prj.conf;c:/Users/artorias961/Desktop/Notas/Project/Thesis/zigbee/network_coordinator/boards/nrf5340dk_nrf5340_cpuapp.conf
+CACHED_CONF_FILE:STRING=c:/Users/artorias961/Desktop/Notas/Project/Thesis/zigbee/network_coordinator/prj.conf
 
 //Selected shield
 CACHED_SHIELD:STRING=
@@ -447,11 +447,17 @@ Zigbee coordinator_BINARY_DIR:STATIC=C:/Users/artorias961/Desktop/Notas/Project/
 //Value Computed by CMake
 Zigbee coordinator_SOURCE_DIR:STATIC=C:/Users/artorias961/Desktop/Notas/Project/Thesis/zigbee/network_coordinator
 
+//No help, variable specified on the command line.
+hci_rpmsg_OVERLAY_CONFIG:UNINITIALIZED=C:/ncs/v2.5.2/nrf/subsys/partition_manager/partition_manager_enabled.conf
+
 //Value Computed by CMake
 metal_BINARY_DIR:STATIC=C:/Users/artorias961/Desktop/Notas/Project/Thesis/zigbee/network_coordinator/build/modules/libmetal/libmetal
 
 //Value Computed by CMake
 metal_SOURCE_DIR:STATIC=C:/ncs/v2.5.2/modules/hal/libmetal/libmetal
+
+//No help, variable specified on the command line.
+multiprotocol_rpmsg_OVERLAY_CONFIG:UNINITIALIZED=C:/ncs/v2.5.2/nrf/subsys/partition_manager/partition_manager_enabled.conf
 
 //Value Computed by CMake
 open_amp_BINARY_DIR:STATIC=C:/Users/artorias961/Desktop/Notas/Project/Thesis/zigbee/network_coordinator/build/modules/open-amp/open-amp
@@ -577,7 +583,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=175
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=187
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
@@ -620,7 +626,7 @@ CMAKE_STRIP-ADVANCED:INTERNAL=1
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 //The build type
 CONF_FILE_BUILD_TYPE:INTERNAL=
-CPUNET_PM_DOMAIN_DYNAMIC_PARTITION:INTERNAL=802154_rpmsg
+CPUNET_PM_DOMAIN_DYNAMIC_PARTITION:INTERNAL=multiprotocol_rpmsg
 //Details about finding Dtc
 FIND_PACKAGE_MESSAGE_DETAILS_Dtc:INTERNAL=[C:/ncs/toolchains/c57af46cb7/opt/bin/dtc.exe][v1.4.7(1.4.6)]
 //Details about finding GnuLd

@@ -1,5 +1,8 @@
 {
     "nrf-connect.applications": [
         "${workspaceFolder}"
-    ]
+    ],
+    "files.associations": {
+        "zb_mem_config_max.h": "c"
+    }
 }

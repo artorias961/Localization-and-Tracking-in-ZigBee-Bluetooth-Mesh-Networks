@@ -44,6 +44,11 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
+  include("C:/Users/artorias961/Desktop/Notas/Project/Thesis/zigbee/network_coordinator/build/modules/nrfxlib/nrfxlib/softdevice_controller/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
   include("C:/Users/artorias961/Desktop/Notas/Project/Thesis/zigbee/network_coordinator/build/modules/nrfxlib/nrfxlib/zboss/cmake_install.cmake")
 endif()
 
