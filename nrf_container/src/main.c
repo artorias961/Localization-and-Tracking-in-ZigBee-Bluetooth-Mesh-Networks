@@ -1,3 +1,21 @@
+/*
+Christopher Morales
+
+Purpose is to create a simple protocol that can get RSSI from a device using GATT.
+
+Link 1: https://docs.zephyrproject.org/latest/connectivity/bluetooth/api/connection_mgmt.html
+Link 2: https://lists.zephyrproject.org/g/devel/topic/ble_read_rssi_of_connected/16760867
+Link 3: https://devzone.nordicsemi.com/f/nordic-q-a/102148/reading-rssi-with-ncs-with-softdevice-controler-does-not-work
+Link 4: https://developer.nordicsemi.com/nRF_Connect_SDK/doc/latest/nrfxlib/softdevice_controller/doc/api.html#c.sdc_hci_cmd_sp_read_rssi
+Link 5 (MUST): https://github.com/nrfconnect/sdk-nrfxlib
+Link 6 (MUST): https://developer.nordicsemi.com/nRF_Connect_SDK/doc/latest/nrfxlib/README.html
+Link 7: https://developer.nordicsemi.com/nRF_Connect_SDK/doc/latest/nrf/libraries/networking/nrf_cloud_rest.html
+Link 8: https://developer.nordicsemi.com/nRF_Connect_SDK/doc/1.9.99-dev1/nrfxlib/nrf_dm/README.html 
+Link 9: https://devzone.nordicsemi.com/f/nordic-q-a/80182/how-to-add-a-ncs-nrf-library-to-my-project 
+LINK 10: https://devzone.nordicsemi.com/f/nordic-q-a/108438/add-open-source-drivers-libraries-to-projects-using-cmake-and-externalproject_add
+*/
+
+
 // ============================================================================================
 // Setup and Initialization
 // ============================================================================================
@@ -16,12 +34,26 @@
 #include <zephyr/bluetooth/addr.h>
 #include <zephyr/bluetooth/conn.h>
 
+// Libraries to use bit modification/padding
+#include <zephyr/sys/byteorder.h>
+
+// Libraries to get RSSI using the nrfxlib
+// #include <soc/nrfx_coredep.h>
+// #include <ncs_version.h>
+
+// ============================================================================================
+// Global Variables
+// ============================================================================================
+
 // Creating the LOG Module 
 LOG_MODULE_REGISTER(zb_monitor, LOG_LEVEL_DBG);
 
 // Declaring global variables (can not be changed)
 #define BT_UUID_SST_SVC_BYTES  BT_UUID_128_ENCODE(0x00001523, 0x1212, 0xefde, 0x18282, 0x785fdeadbeef)
 #define BT_UUID_SST_SVC  BT_UUID_DECLARE_128(BT_UUID_SST_SVC_BYTES)
+
+// This will only get data when the board is connected our_conn can work but need to create conditions
+uint16_t global_conn_handle;
 
 // ============================================================================================
 // Declaring functions
@@ -133,6 +165,9 @@ void on_connected(struct bt_conn *conn, uint8_t error){
     
     // The connection of the bluetooth device
     our_conn = bt_conn_ref(conn);
+
+    // Save the connection handle #todo <----------------------------------------------------------------------------------------------------- 
+    // global_conn_handle = sdc_
 }
 
 void on_disconnected(struct bt_conn *conn, uint8_t reason){
@@ -176,10 +211,68 @@ int api_ble_gatt_notify(uint32_t sensor_value){
     return error;
 }
 
+// ============================================================================================
+// RSSI RELATED
+// ============================================================================================
+
+static void read_conn_rssi(uint16_t handle, int8_t *rssi)
+{
+    // Declaration of buffer variables for the command and response
+	struct net_buf *buf, *rsp = NULL;
+
+    // Pointers for command and response structures
+	struct bt_hci_cp_read_rssi *cp;
+	struct bt_hci_rp_read_rssi *rp;
+
+    // Variable for error handling
+	int err;
+
+    // Creating a command buffer for the READ RSSI operation
+	buf = bt_hci_cmd_create(BT_HCI_OP_READ_RSSI, sizeof(*cp));
+
+    // If buffer allocation fails, print an error message and exit the function
+	if (!buf) {
+        // Logging the module
+		LOG_ERR("Unable to allocate command buffer\n");
+
+        // Stop the program
+		return;
+	}
+
+    // Adding the command payload to the buffer and setting the connection handle
+	cp = net_buf_add(buf, sizeof(*cp));
+	cp->handle = sys_cpu_to_le16(handle);
+
+    // Sending the command synchronously and receiving a response
+	err = bt_hci_cmd_send_sync(BT_HCI_OP_READ_RSSI, buf, &rsp);
+
+    // If an error occurs, extract the error reason and print it, then exit the function
+	if (err) {
+		uint8_t reason = rsp ?
+			((struct bt_hci_rp_read_rssi *)rsp->data)->status : 0;
+		LOG_ERR("Read RSSI err: %d reason 0x%02x\n", err, reason);
+
+        // Stop the program
+		return;
+	}
+
+    // Extracting the RSSI value from the response
+	rp = (void *)rsp->data;
+	*rssi = rp->rssi;
+
+    // Releasing the memory allocated for the response buffer (essentially properly managing memory)
+	net_buf_unref(rsp);
+}
+
+// ============================================================================================
+// MAIN FUNCTION
+// ============================================================================================
 
 void main(void){
     // Creating a variable that will be able to detect an error
     int error;
+
+    int8_t rssi_value;
 
     // Creating the counter to determine if notifications is updating (more for the logging module)
     uint32_t counter = 0;
@@ -250,15 +343,25 @@ void main(void){
     // Then do these operations
     while(1){
         LOG_WRN("==========================================================");
-        printk("Hi %d", counter);
-        LOG_WRN("Hi %d", counter);
+        // printk("Hi %d", counter);
+        LOG_INF("Hi %d", counter);
         counter++;
+        
+        k_sleep(K_SECONDS(1));
+        read_conn_rssi(global_conn_handle, &rssi_value);
+        LOG_WRN("RSSI: %d dBm", rssi_value);
+
         LOG_WRN("==========================================================");
         k_sleep(K_SECONDS(1));
     }
 }
 
 
+
+/*
+Option 1: The edge server be the control of time for the network topology but there will be delay when transimitting data to the network.
+Option 2: 
+*/
 
 
 

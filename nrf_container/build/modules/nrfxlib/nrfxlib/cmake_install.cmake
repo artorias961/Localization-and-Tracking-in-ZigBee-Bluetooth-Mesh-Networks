@@ -47,3 +47,8 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("C:/Users/artorias961/Desktop/Notas/Project/Thesis/nrf_container/build/modules/nrfxlib/nrfxlib/softdevice_controller/cmake_install.cmake")
 endif()
 
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("C:/Users/artorias961/Desktop/Notas/Project/Thesis/nrf_container/build/modules/nrfxlib/nrfxlib/nrf_dm/cmake_install.cmake")
+endif()
+

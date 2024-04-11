@@ -1,202 +1,365 @@
 /*
-The purpose of the code is to use GATT to gather RSSI data from a singular device. 
+ * Copyright (c) 2020 Nordic Semiconductor ASA
+ *
+ * SPDX-License-Identifier: LicenseRef-Nordic-5-Clause
+ */
 
-Then implement to ZigBee
-*/
+/** @file
+ *  @brief Simple Zigbee network coordinator implementation
+ */
 
-
-// General libraries for zephry
 #include <zephyr/kernel.h>
 #include <zephyr/device.h>
-#include <zephyr/drivers/gpio.h>
-#include <zephyr/smf.h>
 #include <zephyr/logging/log.h>
+#include <dk_buttons_and_leds.h>
 
-// Libraries for the bluetooth
-#include <zephyr/bluetooth/bluetooth.h>
-#include <zephyr/bluetooth/gap.h>
-#include <zephyr/bluetooth/gatt.h>
-#include <zephyr/bluetooth/uuid.h>
-#include <zephyr/bluetooth/addr.h>
-#include <zephyr/bluetooth/conn.h>
-
-
-// Global varaibles
-#define DEVICE_NAME             CONFIG_BT_DEVICE_NAME
-#define DEVICE_NAME_LEN         (sizeof(DEVICE_NAME) - 1)
-
-// Declaring the Log Module and the severity level I want it to respond to (debug level, lowest level) 
-LOG_MODULE_REGISTER(ble_test, LOG_LEVEL_INF);
+#include <zboss_api.h>
+#include <zb_mem_config_max.h>
+#include <zigbee/zigbee_error_handler.h>
+#include <zigbee/zigbee_app_utils.h>
+#include <zb_nrf_platform.h>
+#include "zb_range_extender.h"
 
 
+#define RUN_STATUS_LED                         DK_LED1
+#define RUN_LED_BLINK_INTERVAL                 1000
 
-// STEP 5.1 - Create the advertising parameter for connectable advertising 
-static struct bt_le_adv_param *adv_param = BT_LE_ADV_PARAM((BT_LE_ADV_OPT_CONNECTABLE|BT_LE_ADV_OPT_USE_IDENTITY), /* Connectable advertising and use identity address */
-                800, /*Min Advertising Interval 500ms (800*0.625ms) */
-                801, /*Max Advertising Interval 500.625ms (801*0.625ms)*/
-                NULL); /* Set to NULL for undirected advertising*/
+/* Device endpoint, used to receive ZCL commands. */
+#define ZIGBEE_COORDINATOR_ENDPOINT            10
 
+/* Type of power sources available for the device.
+ * For possible values see section 3.2.2.2.8 of ZCL specification.
+ */
+#define COORDINATOR_INIT_BASIC_POWER_SOURCE    ZB_ZCL_BASIC_POWER_SOURCE_DC_SOURCE
 
+/* LED indicating that device successfully joined Zigbee network. */
+#define ZIGBEE_NETWORK_STATE_LED               DK_LED3
 
-// Creating the advertising data
-static const struct bt_data advertise_data[] = {
-	/* STEP 3.1 - Set the flags and populate the device name in the advertising packet */
-	BT_DATA_BYTES(BT_DATA_FLAGS, (BT_LE_AD_GENERAL | BT_LE_AD_NO_BREDR)),
-	BT_DATA(BT_DATA_NAME_COMPLETE, DEVICE_NAME, DEVICE_NAME_LEN),
+/* LED used for device identification. */
+#define IDENTIFY_LED                           DK_LED4
 
+/* Button which reopens the Zigbee Network. */
+#define KEY_ZIGBEE_NETWORK_REOPEN              DK_BTN1_MSK
+
+/* Button used to enter the Identify mode. */
+#define IDENTIFY_MODE_BUTTON                   DK_BTN4_MSK
+
+/* If set to ZB_TRUE then device will not open the network after forming or reboot. */
+#define ZIGBEE_MANUAL_STEERING                 ZB_FALSE
+
+#define ZIGBEE_PERMIT_LEGACY_DEVICES           ZB_FALSE
+
+#ifndef ZB_COORDINATOR_ROLE
+#error Define ZB_COORDINATOR_ROLE to compile coordinator source code.
+#endif
+
+/* Button to start Factory Reset */
+#define FACTORY_RESET_BUTTON IDENTIFY_MODE_BUTTON
+
+LOG_MODULE_REGISTER(app, LOG_LEVEL_INF);
+
+/* Main application customizable context.
+ * Stores all settings and static values.
+ */
+struct zb_device_ctx {
+	zb_zcl_basic_attrs_t basic_attr;
+	zb_zcl_identify_attrs_t identify_attr;
 };
 
+/* Zigbee device application context storage. */
+static struct zb_device_ctx dev_ctx;
+
+ZB_ZCL_DECLARE_IDENTIFY_ATTRIB_LIST(
+	identify_attr_list,
+	&dev_ctx.identify_attr.identify_time);
+
+ZB_ZCL_DECLARE_BASIC_ATTRIB_LIST(
+	basic_attr_list,
+	&dev_ctx.basic_attr.zcl_version,
+	&dev_ctx.basic_attr.power_source);
+
+ZB_DECLARE_RANGE_EXTENDER_CLUSTER_LIST(
+	nwk_coordinator_clusters,
+	basic_attr_list,
+	identify_attr_list);
+
+ZB_DECLARE_RANGE_EXTENDER_EP(
+	nwk_coordinator_ep,
+	ZIGBEE_COORDINATOR_ENDPOINT,
+	nwk_coordinator_clusters);
+
+ZBOSS_DECLARE_DEVICE_CTX_1_EP(
+	nwk_coordinator,
+	nwk_coordinator_ep);
 
 
-// 
-static const struct bt_data scan_data[] = {
-	/* STEP 3.2.2 - Include the 16-bytes (128-Bits) UUID of the LBS service in the scan response packet */
-	BT_DATA_BYTES(BT_DATA_UUID128_ALL, BT_UUID_128_ENCODE(0x00001523, 0x1212, 0xefde, 0x1523, 0x785feabcd123)),
-};
+/**@brief Function for initializing all clusters attributes. */
+static void app_clusters_attr_init(void)
+{
+	/* Basic cluster attributes data. */
+	dev_ctx.basic_attr.zcl_version = ZB_ZCL_VERSION;
+	dev_ctx.basic_attr.power_source = COORDINATOR_INIT_BASIC_POWER_SOURCE;
 
-// This function handles RSSI updates
-void rssi_updated(struct bt_conn *conn, int8_t rssi) {
-    LOG_WRN("RSSI: %d dBm", rssi);
+	/* Identify cluster attributes data. */
+	dev_ctx.identify_attr.identify_time = ZB_ZCL_IDENTIFY_IDENTIFY_TIME_DEFAULT_VALUE;
 }
 
-// Our bluetooth connection will be set to NULL
-struct bt_conn* our_conn = NULL;
+/**@brief Function to toggle the identify LED.
+ *
+ * @param  bufid  Unused parameter, required by ZBOSS scheduler API.
+ */
+static void toggle_identify_led(zb_bufid_t bufid)
+{
+	static int blink_status;
 
-void on_connected(struct bt_conn *conn, uint8_t err){
-    // Creating a conditional statement if there is an error
-    if (err){
-        // Log the error to the console
-        LOG_ERR("Connection error %d\n", err);
-
-        // Stop the program since we got an error
-        return;
-    }
-
-    // Log the console that it was able to connect through bluetooth
-    LOG_INF("Connected");
-    our_conn = bt_conn_ref(conn);
+	dk_set_led(IDENTIFY_LED, (++blink_status) % 2);
+	ZB_SCHEDULE_APP_ALARM(toggle_identify_led, bufid, ZB_MILLISECONDS_TO_BEACON_INTERVAL(100));
 }
 
+/**@brief Function to handle identify notification events on the first endpoint.
+ *
+ * @param  bufid  Unused parameter, required by ZBOSS scheduler API.
+ */
+static void identify_cb(zb_bufid_t bufid)
+{
+	zb_ret_t zb_err_code;
 
-void disconnected(struct bt_conn *conn, uint8_t err){
-    // Creating a conditional statement if there is an error
-    if (err){
-        // Log the error to the console
-        LOG_ERR("Disconnect error %d\n", err);
+	if (bufid) {
+		/* Schedule a self-scheduling function that will toggle the LED. */
+		ZB_SCHEDULE_APP_CALLBACK(toggle_identify_led, bufid);
+	} else {
+		/* Cancel the toggling function alarm and turn off LED. */
+		zb_err_code = ZB_SCHEDULE_APP_ALARM_CANCEL(toggle_identify_led, ZB_ALARM_ANY_PARAM);
+		ZVUNUSED(zb_err_code);
 
-        // Stop the program since we got an error
-        return;
-    }
-    
-
-
+		dk_set_led(IDENTIFY_LED, 0);
+	}
 }
 
+/**@brief Starts identifying the device.
+ *
+ * @param  bufid  Unused parameter, required by ZBOSS scheduler API.
+ */
+static void start_identifying(zb_bufid_t bufid)
+{
+	ZVUNUSED(bufid);
 
+	if (ZB_JOINED()) {
+		/* Check if endpoint is in identifying mode,
+		 * if not, put desired endpoint in identifying mode.
+		 */
+		if (dev_ctx.identify_attr.identify_time ==
+		    ZB_ZCL_IDENTIFY_IDENTIFY_TIME_DEFAULT_VALUE) {
 
-int main(void){
-    // Creating an integer variable
-    int err;
+			zb_ret_t zb_err_code = zb_bdb_finding_binding_target(
+				ZIGBEE_COORDINATOR_ENDPOINT);
 
-    // some counter
-    int cnt = 0;
+			if (zb_err_code == RET_OK) {
+				LOG_INF("Enter identify mode");
+			} else if (zb_err_code == RET_INVALID_STATE) {
+				LOG_WRN("RET_INVALID_STATE - Cannot enter identify mode");
+			} else {
+				ZB_ERROR_CHECK(zb_err_code);
+			}
+		} else {
+			LOG_INF("Cancel identify mode");
+			zb_bdb_finding_binding_target_cancel();
+		}
+	} else {
+		LOG_WRN("Device not in a network - cannot enter identify mode");
+	}
+}
 
-    // Logging our processes
-    LOG_INF("Setting up our bluetooth . . .");
+/**@brief Callback used in order to visualise network steering period.
+ *
+ * @param[in]   param   Not used. Required by callback type definition.
+ */
+static void steering_finished(zb_uint8_t param)
+{
+	ARG_UNUSED(param);
 
-    // Storing the addresses
-    bt_addr_le_t addr;
-    err = bt_addr_le_from_str("FF:EE:DD:CC:BB:AA", "random", &addr);
+	LOG_INF("Network steering finished");
+	dk_set_led_off(ZIGBEE_NETWORK_STATE_LED);
+}
 
-    // Creating a conditional statement if there is an error
-    if (err){
-        // Log the error to the module
-        LOG_ERR("Invalid BT address (err %d)\n", err);
+/**@brief Callback for button events.
+ *
+ * @param[in]   button_state  Bitmask containing buttons state.
+ * @param[in]   has_changed   Bitmask containing buttons that has changed their state.
+ */
+static void button_changed(uint32_t button_state, uint32_t has_changed)
+{
+	/* Calculate bitmask of buttons that are pressed and have changed their state. */
+	uint32_t buttons = button_state & has_changed;
+	zb_bool_t comm_status;
 
-        // Stop the program since we got an error 
-        return err;
-    }
+	if (buttons & KEY_ZIGBEE_NETWORK_REOPEN) {
+		(void)(ZB_SCHEDULE_APP_ALARM_CANCEL(steering_finished, ZB_ALARM_ANY_PARAM));
 
-    // Each manufacture has there own security (manufacture security for Bluetooth or encoding)
-    err = bt_id_create(&addr, NULL);
+		comm_status = bdb_start_top_level_commissioning(ZB_BDB_NETWORK_STEERING);
+		if (comm_status) {
+			LOG_INF("Top level commissioning restated");
+		} else {
+			LOG_INF("Top level commissioning hasn't finished yet!");
+		}
+	}
 
-    // Creating a conditional statement if there is an error
-    if (err < 0){
-        //
-        LOG_ERR("Creating new identity failed (err %d)\n", err);
+	if (IDENTIFY_MODE_BUTTON & has_changed) {
+		if (IDENTIFY_MODE_BUTTON & button_state) {
+			/* Button changed its state to pressed */
+		} else {
+			/* Button changed its state to released */
+			if (was_factory_reset_done()) {
+				/* The long press was for Factory Reset */
+				LOG_DBG("After Factory Reset - ignore button release");
+			} else   {
+				/* Button released before Factory Reset */
 
-        // Stop the program since we got an error
-        return err;
-    }
+				/* Start identification mode */
+				ZB_SCHEDULE_APP_CALLBACK(start_identifying, 0);
+			}
+		}
+	}
 
-    // Register the connection callbacks with the added RSSI handler
-    static struct bt_conn_cb conn_callbacks = {
-        .connected = on_connected,
-        .disconnected = disconnected,
-        .le_param_updated = rssi_updated,  // Adjust according to correct signature
-    };
+	check_factory_reset_button(button_state, has_changed);
+}
 
-    //
-    bt_conn_cb_register(&conn_callbacks);
+/**@brief Function for initializing LEDs and Buttons. */
+static void configure_gpio(void)
+{
+	int err;
 
-    // Enabling bluetooth
-    err = bt_enable(NULL);
+	err = dk_buttons_init(button_changed);
+	if (err) {
+		LOG_ERR("Cannot init buttons (err: %d)", err);
+	}
 
-    // Creating a conditional statement if there is an error
-    if (err < 0){
-        // If the device could not initialize bluetooth
-        LOG_ERR("Bluetooth initialize failed (err %d)\n", err);
+	err = dk_leds_init();
+	if (err) {
+		LOG_ERR("Cannot init LEDs (err: %d)", err);
+	}
+}
 
-        // Stop the program since we got an error
-        return err;
-    }
+/**@brief Zigbee stack event handler.
+ *
+ * @param[in]   bufid   Reference to the Zigbee stack buffer used to pass signal.
+ */
+void zboss_signal_handler(zb_bufid_t bufid)
+{
+	/* Read signal description out of memory buffer. */
+	zb_zdo_app_signal_hdr_t *sg_p = NULL;
+	zb_zdo_app_signal_type_t sig = zb_get_app_signal(bufid, &sg_p);
+	zb_ret_t status = ZB_GET_APP_SIGNAL_STATUS(bufid);
+	zb_ret_t zb_err_code;
+	zb_bool_t comm_status;
+	zb_time_t timeout_bi;
 
-    // Adding to the logging console module (we create/initiailize the bluetooth)
-    LOG_INF("Bluetooth Enabled! . . . ");
-    LOG_INF("Starting Advertising . . . ");
+	switch (sig) {
+	case ZB_BDB_SIGNAL_DEVICE_REBOOT:
+		/* BDB initialization completed after device reboot,
+		 * use NVRAM contents during initialization.
+		 * Device joined/rejoined and started.
+		 */
+		if (status == RET_OK) {
+			if (ZIGBEE_MANUAL_STEERING == ZB_FALSE) {
+				LOG_INF("Start network steering");
+				comm_status = bdb_start_top_level_commissioning(
+					ZB_BDB_NETWORK_STEERING);
+				ZB_COMM_STATUS_CHECK(comm_status);
+			} else {
+				LOG_INF("Coordinator restarted successfully");
+			}
+		} else {
+			LOG_ERR("Failed to initialize Zigbee stack using NVRAM data (status: %d)",
+				status);
+		}
+		break;
 
-    //
-    err = bt_le_adv_start(
-        adv_param, advertise_data, ARRAY_SIZE(advertise_data),
-        scan_data, ARRAY_SIZE(scan_data));
+	case ZB_BDB_SIGNAL_STEERING:
+		if (status == RET_OK) {
+			if (ZIGBEE_PERMIT_LEGACY_DEVICES == ZB_TRUE) {
+				LOG_INF("Allow pre-Zigbee 3.0 devices to join the network");
+				zb_bdb_set_legacy_device_support(1);
+			}
 
-    // Creating a conditional statement if there is an error
-    if (err < 0){
-        //If the device could not advertise data
-        LOG_ERR("Bluetooth advertisement start failed (err %d)\n", err);
+			/* Schedule an alarm to notify about the end of steering period.
+			 */
+			LOG_INF("Network steering started");
+			zb_err_code = ZB_SCHEDULE_APP_ALARM(
+				steering_finished, 0,
+				ZB_TIME_ONE_SECOND *
+				ZB_ZGP_DEFAULT_COMMISSIONING_WINDOW);
+			ZB_ERROR_CHECK(zb_err_code);
+		}
+		break;
 
-        // Stop the program since we got an error
-        return err;
-    }
+	case ZB_ZDO_SIGNAL_DEVICE_ANNCE: {
+		zb_zdo_signal_device_annce_params_t *dev_annce_params =
+			ZB_ZDO_SIGNAL_GET_PARAMS(
+				sg_p, zb_zdo_signal_device_annce_params_t);
 
-    // If the advertise was a success then log 
-    LOG_INF("Advertise started!");
+		LOG_INF("New device commissioned or rejoined (short: 0x%04hx)",
+			dev_annce_params->device_short_addr);
 
-    
+		zb_err_code = ZB_SCHEDULE_APP_ALARM_CANCEL(steering_finished, ZB_ALARM_ANY_PARAM);
+		if (zb_err_code == RET_OK) {
+			LOG_INF("Joining period extended.");
+			zb_err_code = ZB_SCHEDULE_APP_ALARM(
+				steering_finished, 0,
+				ZB_TIME_ONE_SECOND *
+				ZB_ZGP_DEFAULT_COMMISSIONING_WINDOW);
+			ZB_ERROR_CHECK(zb_err_code);
+		}
+	} break;
 
-    // Creating an infinite loop
-    while (1){
-        // Have a delay
-        k_sleep(K_SECONDS(1));
+	default:
+		/* Call default signal handler. */
+		ZB_ERROR_CHECK(zigbee_default_signal_handler(bufid));
+		break;
+	}
 
-        // RSSI
-        if (our_conn) {
-            struct bt_conn_info info;
-            // Retrieve connection info including RSSI
-            if (bt_conn_get_info(our_conn, &info) == 0) {
-                // Print the RSSI value
-                LOG_INF("Current RSSI: %d dBm", info.le.rssi);
-                LOG_INF("Hi %d", cnt);
-            } else {
-                LOG_ERR("Failed to get connection info");
-            }
-        } else {
-            LOG_INF("Not connected");
-        }
+	/* Update network status LED. */
+	if (ZB_JOINED() &&
+	    (ZB_SCHEDULE_GET_ALARM_TIME(steering_finished, ZB_ALARM_ANY_PARAM,
+					&timeout_bi) == RET_OK)) {
+		dk_set_led_on(ZIGBEE_NETWORK_STATE_LED);
+	} else {
+		dk_set_led_off(ZIGBEE_NETWORK_STATE_LED);
+	}
 
-        // Log the information that it is alive
-        LOG_INF("I'm alive!!!");
-        cnt = cnt + 1;
-    }
-    return 0;
+	/*
+	 * All callbacks should either reuse or free passed buffers.
+	 */
+	if (bufid) {
+		zb_buf_free(bufid);
+	}
+}
+
+int main(void)
+{
+	int blink_status = 0;
+
+	LOG_INF("Starting ZBOSS Coordinator example");
+
+	/* Initialize */
+	configure_gpio();
+	register_factory_reset_button(FACTORY_RESET_BUTTON);
+
+	/* Register device context (endpoints). */
+	ZB_AF_REGISTER_DEVICE_CTX(&nwk_coordinator);
+
+	app_clusters_attr_init();
+
+	/* Register handlers to identify notifications. */
+	ZB_AF_SET_IDENTIFY_NOTIFICATION_HANDLER(ZIGBEE_COORDINATOR_ENDPOINT, identify_cb);
+
+	/* Start Zigbee default thread */
+	zigbee_enable();
+
+	LOG_INF("ZBOSS Coordinator example started");
+
+	while (1) {
+		dk_set_led(RUN_STATUS_LED, (++blink_status) % 2);
+		k_sleep(K_MSEC(RUN_LED_BLINK_INTERVAL));
+	}
 }
