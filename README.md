@@ -39,3 +39,6 @@
 # References
 - Bluetooth
    - [Bluetooth Protocols](https://docs.zephyrproject.org/latest/connectivity/bluetooth/bluetooth-arch.html)
+
+- Zigbee
+   - [Samples](https://developer.nordicsemi.com/nRF_Connect_SDK/doc/2.6.1/nrf/samples/zigbee.html)

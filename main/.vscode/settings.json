@@ -1,0 +1,8 @@
+{
+    "nrf-connect.applications": [
+        "${workspaceFolder}"
+    ],
+    "files.associations": {
+        "zb_range_extender.h": "c"
+    }
+}
