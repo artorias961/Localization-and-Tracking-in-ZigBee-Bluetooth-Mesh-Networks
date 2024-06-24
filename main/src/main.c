@@ -100,8 +100,19 @@ ZBOSS_DECLARE_DEVICE_CTX_1_EP(
 
 // <-------------------------------------------------------------- My Stuff (START)
 static void rssi_measurement_handler(zb_bufid_t bufid) {
-    int8_t rssi = nrf_802154_rssi_last_get();
+    // Creating a variable to store the RSSI
+	int8_t rssi;
+	
+	// Getting the last RSSI measurement (assuming the conversion is setup and since the attenna is bi directional, we can get negative values else we need a conditional statement)
+	rssi = nrf_802154_rssi_last_get();
     LOG_INF("RSSI: %d dBm", rssi);
+
+
+    // if (rssi == NRF_802154_RSSI_INVALID) {
+        // LOG_WRN("Invalid RSSI measurement");
+    // } else {
+        // LOG_INF("RSSI: %d dBm", rssi);
+    // }
 
     // Schedule next RSSI measurement
     ZB_SCHEDULE_APP_ALARM(rssi_measurement_handler, bufid, ZB_TIME_ONE_SECOND);

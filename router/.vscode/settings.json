@@ -1,0 +1,13 @@
+{
+    "nrf-connect.applications": [
+        "${workspaceFolder}"
+    ],
+    "files.associations": {
+        "ieee802154_radio.h": "c",
+        "log.h": "c",
+        "zigbee_zcl_scenes.h": "c",
+        "zigbee_error_handler.h": "c",
+        "zb_mem_config_med.h": "c",
+        "zboss_api_zcl.h": "c"
+    }
+}
