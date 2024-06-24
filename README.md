@@ -33,6 +33,50 @@ A structure that holds the device's configuration and state, including all endpo
 
 
 
+
+
+## IEEE 802.15.4 Library
+The IEEE 802.15.4 standard is a key element in wireless communication, specifically designed for low-rate wireless personal area networks (LR-WPANs).
+
+
+## Zephyr API
+- **PHY level Driver API**: To be implemented by all drivers, ensuring integration with the native L2 stack and basic support for OpenThread.
+
+- **MAC level Extensions**: Optional extensions to offload performance-critical or timing-sensitive aspects of the MAC layer to the hardware.
+
+### Physical Layer (PHY)
+The layer responsible for the transmission and reception of data bits over a physical medium. It includes details like the modulation technique and frequency band.
+
+
+### Medium Access Control Layer (MAC)
+This layer manages protocol access to the physical network medium. It includes functions like channel access, addressing, frame validation, and acknowledgment.
+
+### Personal Area Network (PAN)
+A network organized around an individual person within a single building. It typically ranges up to 10 meters.
+
+### Coordinator 
+ A device that initializes, maintains, and manages the network. It can assign addresses to other devices in the network.
+
+### Endpoint
+A logical interface within a device, represented by an endpoint identifier (EPID). Endpoints are used to communicate specific services or capabilities of the device.
+
+### Common key Functions and Macros
+- **IEEE802154_CONFIG_RX_SLOT_NONE**
+   - Used to cancel any previously configured RX slot
+
+- **IEEE802154_CONFIG_RX_SLOT_OFF**
+   - Keeps RX off when the driver starts or switches it off immediately when the driver is up
+
+- **IEEE802154_BROADCAST_ADDRESS**
+   - Represents the broadcast short address used in the network
+
+- **IEEE802154_FCS_LENGTH**
+   - Defines the frame check sequence length, typically 2 bytes
+
+- **IEEE802154_MAX_PHY_PACKET_SIZE**
+   - The maximum PHY packet size, usually 127 bytes
+
+
 ## Scanning local devices Methods
 ### Enable the Interface
 This function brings a network interface up, enabling it to start communication. Before performing any network operations, the interface must be in an "up" state.
