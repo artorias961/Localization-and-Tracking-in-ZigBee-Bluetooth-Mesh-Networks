@@ -5,11 +5,15 @@ These [samples](https://developer.nordicsemi.com/nRF_Connect_SDK/doc/2.6.1/nrf/s
 
 - Zigbee Light Switch: This sample shows how to implement a **Zigbee end device** that can control a Zigbee light bulb. This is useful for understanding how to interact with router nodes in the network.
 
-- Zigbee Network Coordinator: Although this is for the **coordinator role**, it provides a example of how to set up a Zigbee coordinator to manage the network.
+- Zigbee Network Coordinator: This is for the **coordinator role**, it provides a example of how to set up a Zigbee coordinator to manage the network.
+
+- Zigbee Shell: The Zigbee Shell sample is designed to provide an interactive command-line interface (CLI) for configuring and managing a Zigbee network **(Zigbee router or Coordinator)**
+[text](about:blank#blocked)
+- Zigbee Template: The Zigbee Template sample provides a minimal implementation of a **Zigbee router**, serving as a starting point for custom Zigbee applications
 
 
 ## Zigbee Cluster Library
-The Zigbee Cluster Library (ZCL) provides a standardized way to implement device functionality within a Zigbee network. It defines collections of related attributes and commands, known as clusters, which standardize how devices such as sensors, lights, and controllers interact with each other. ZCL clusters handle common functionalities like on/off control, temperature measurement, and more, allowing interoperability between devices from different manufacturers. By using ZCL, developers can ensure their devices can communicate effectively within the Zigbee ecosystem.
+The Zigbee Cluster Library (ZCL) provides a standardized way to implement device functionality within a Zigbee network. It defines collections of related attributes and commands, known as clusters, which standardize how devices such as sensors, lights, and controllers interact with each other. ZCL clusters handle common functionalities like on/off control, temperature measurement, and more, allowing interoperability between devices from different manufacturers.
 
 ### Endpoints
 Logical entities within a Zigbee device, each representing a distinct application or function. Each endpoint has a unique identifier and a set of clusters it supports. For example, a light bulb might have an endpoint for basic on/off control and another for dimming.
@@ -20,7 +24,11 @@ Groups of attributes and commands that define a specific functionality. For exam
 
 ### Attributes
 Data points that describe the state or configuration of a Zigbee device. Each cluster contains a list of attributes. For example, an On/Off cluster might have an OnOff attribute indicating whether the device is on or off.
-Commands
+
+### Commands
+Commands are actions that can be performed on a cluster. For example, the On/Off cluster includes commands like On, Off, and Toggle. Commands allow for controlling the state of attributes within a cluster.
+
+
 
 ### Callbacks
 Functions that handle events or responses in the Zigbee network. For instance, when a command is received, a callback function processes the command and performs the corresponding action.
@@ -28,7 +36,10 @@ Functions that handle events or responses in the Zigbee network. For instance, w
 ### ZCL Macros
 A structure that holds the device's configuration and state, including all endpoints and clusters it supports. ZCL Declarations: Macros that simplify the definition of attributes, clusters, and endpoints. For example, ZB_ZCL_DECLARE_ON_OFF_ATTRIB_LIST declares the attribute list for an On/Off cluster.
 
-### Zigbee Application Framework
+### Device Context
+Device context is a structure that holds the device's configuration and state, including all endpoints and clusters it supports. It is essential for maintaining the operational state of the device and ensuring that it can respond to network commands appropriately.
+
+
 
 
 
@@ -37,6 +48,7 @@ A structure that holds the device's configuration and state, including all endpo
 
 ## IEEE 802.15.4 Library
 The IEEE 802.15.4 standard is a key element in wireless communication, specifically designed for low-rate wireless personal area networks (LR-WPANs).
+
 
 
 ## Zephyr API
@@ -75,6 +87,17 @@ A logical interface within a device, represented by an endpoint identifier (EPID
 
 - **IEEE802154_MAX_PHY_PACKET_SIZE**
    - The maximum PHY packet size, usually 127 bytes
+
+
+
+## ZBoss Library
+ZBOSS (Zigbee Open Source Stack) is a high-performance Zigbee software protocol stack developed by Nordic Semiconductor. It ensures interoperability, customization, testing, and optimization of Zigbee solutions. ZBOSS is designed to be resource-efficient, cross-platform compatible, and thoroughly tested for real-world interoperability. It supports the Zigbee 3.0 specification, all Zigbee device roles, and is certified by the Zigbee Alliance for compliant platforms [Nordic Documentation](https://developer.nordicsemi.com/nRF_Connect_SDK/doc/zboss_api_doc/zigbee_features.html) [Nordic Documentation](https://developer.nordicsemi.com/nRF_Connect_SDK/doc/zboss_api_doc/zigbee_devguide.html).
+
+
+### Suporroted Protocols
+Compatible with Zigbee 3.0 Specification, IEEE 802.15.4-2011, Zigbee PRO Feature Set, and Zigbee Cluster Library.
+
+
 
 
 ## Scanning local devices Methods
@@ -170,17 +193,98 @@ void set_promiscuous_mode(struct net_if *iface, bool enable) {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# PRJ Issues (SDK 2.6.1 VERSION ONLY)
+
+## CONFIG_NET_L2_IEEE802154_MGMT
+Is assigned in a configuration file, but is not directly user confiirable (has no prompt). It gets its calue indirectly from other symbols and the link the terminal provides is [Link](https://docs.zephyrproject.org/latest/kconfig.html#CONFIG_NET_L2_IEEE802154_MGMT). *Which is a dead link so i cant tell what variables i need for my network management*. So i modify the search bar with this [Link](https://docs.zephyrproject.org/latest/kconfig.html#CONFIG_NET_L2_IEEE802154_MGMT).
+
+If enable CONFIG_NET_L2_IEEE802154_MGMT then an error will be prompted when compiling and the function does not exist in ZephyrRTOS anymore. Need to find another way to get **NET_REQUEST_IEEE802154_ED_SCAN** or the new naming variable. 
+
+
+## No crypto suite for zignee stack has been selected
+
+Make sure the **build configuration** is set to one of the prj else mess with the cpu board flasher
+
+## Nordic Website Error List
+
+[Issues with 2.6.1 and resolving them in 2.7.0](https://docs.nordicsemi.com/bundle/ncs-latest/page/nrf/releases_and_maturity/known_issues.html#known-issues)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # References
+
+- [nrf5340dk general documentation](https://docs.nordicsemi.com/bundle/ug_nrf5340_dk/page/UG/dk/intro.html)
+- [nrf53 Series bundle documentation](https://docs.nordicsemi.com/bundle/ncs-latest/page/nrf/device_guides/nrf53/index.html#ug-nrf5340)
+
+- Visual Studio SDK
+   - [General build and configuration system](https://docs.nordicsemi.com/bundle/ncs-latest/page/nrf/config_and_build/config_and_build_system.html)
+
+
 - Bluetooth
    - [Bluetooth Protocols](https://docs.zephyrproject.org/latest/connectivity/bluetooth/bluetooth-arch.html)
+
+- [ZBoss Base API](https://developer.nordicsemi.com/nRF_Connect_SDK/doc/zboss_api_doc/zigbee_devguide.html)
 
 - Zigbee
    - [Samples](https://developer.nordicsemi.com/nRF_Connect_SDK/doc/2.6.1/nrf/samples/zigbee.html)
    - [Zigbee cluster commands for ZCL send packet](https://community.home-assistant.io/t/zigbee-cluster-commands-broadcast/293700)
 
+- Zigbee Over the Air (FOTA)
+   - [Link](https://docs.nordicsemi.com/bundle/ncs-2.6.1/page/nrf/libraries/zigbee/zigbee_fota.html#lib-zigbee-fota)
+
+- Sending information over Zigbee
+   - [Buffer API (packet buffer pool)](https://developer.nordicsemi.com/nRF_Connect_SDK/doc/zboss_api_doc/group__buf.html)
+
 - ZBOSS and Zigbee Cluster Library
    - [ZCL naming convention](https://developer.nordicsemi.com/nRF_Connect_SDK/doc/zboss_api_doc/group__zcl__api.html)
    - [Common ZCL terms and definitions](https://developer.nordicsemi.com/nRF_Connect_SDK/doc/zboss/3.11.2.0/using_zigbee__z_c_l.html)
+   - [Zigbee endpoint logger](https://docs.nordicsemi.com/bundle/ncs-2.6.99-cs1/page/nrf/libraries/zigbee/zigbee_logger_eprxzcl.html)
 
 - Network Management
    - [Nordoc Documentation](https://docs.nordicsemi.com/bundle/ncs-2.4.0/page/zephyr/connectivity/networking/api/net_mgmt.html)
@@ -205,4 +309,25 @@ void set_promiscuous_mode(struct net_if *iface, bool enable) {
       - Promiscuous Mode
          - In promiscuous mode, the radio listens to all packets on the channel, not just those addressed to it.
          - [net_mgmt](https://github.com/zephyrproject-rtos/zephyr/blob/main/include/zephyr/net/net_mgmt.h)
+
+- Cryptography (encryption)
+   - [AES CTR Nordic Documentation](https://docs.nordicsemi.com/bundle/ncs-latest/page/nrf/samples/crypto/aes_ctr/README.html)
+
+- Multi Threading
+   - [Kthread Nordic Documentation](https://docs.nordicsemi.com/bundle/ncs-2.2.0/page/zephyr/kernel/services/threads/index.html)
+
+- REST API
+   - [nRF Cloud REST API Nordic Documentation](https://docs.nordicsemi.com/bundle/nrf-cloud/page/APIs/REST/RESTOverview.html)
+
+- Zigbee Errors Solution
+   - [Link 1](https://devzone.nordicsemi.com/f/nordic-q-a/60644/combine-zigbee-roles-or-start-a-network-of-two-devices)
+
+# Stuff to do 
+
+
+
+Always scanning and sending (whenever someone ask to joion the commincuaton) (BLE NOTIFY ESSENTAILLY)
+
+
+
 

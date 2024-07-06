@@ -28,13 +28,50 @@
 #include "zb_dimmable_light.h"
 
 
+// #include <zephyr/mem_mgmt/mem_attr.h>
 
 #include <zb_zcl_common.h>
 #include <zboss_api_zcl.h>
+#include <zboss_api_af.h>
 #include <zephyr/net/ieee802154_radio.h>
 #include <zephyr/net/net_mgmt.h>
-#include "zb_custom_cluster.h"
+// #include "zb_custom_cluster.h"
 #include "zephyr/sys/util_internal.h" // A warning prompt this
+
+#define ZB_ZCL_CLUSTER_ID_RSSI_REPORT 0xFC00
+#define ZB_ZCL_ATTR_RSSI_ID 0x0000
+#define RSSI_REPORT_ENDPOINT 10
+
+
+// Defining the RSSI attributes
+typedef struct {
+    zb_int8_t rssi_value;
+} rssi_report_attrs_t;
+
+
+static rssi_report_attrs_t rssi_report_attrs = {
+    .rssi_value = 0
+};
+
+
+struct ieee802154_req_params {
+    uint8_t channel;
+    uint8_t duration;
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 LOG_MODULE_REGISTER(app, LOG_LEVEL_INF);
 
@@ -114,79 +151,106 @@ static const struct pwm_dt_spec led_pwm = PWM_DT_SPEC_GET(PWM_DK_LED4_NODE);
 
 
 
-/* Main application customizable context.
- * Stores all settings and static values.
- */
+/* Main application customizable context. Stores all settings and static values. */
 typedef struct {
-	zb_zcl_basic_attrs_ext_t basic_attr;
-	zb_zcl_identify_attrs_t identify_attr;
-	zb_zcl_scenes_attrs_t scenes_attr;
-	zb_zcl_groups_attrs_t groups_attr;
-	zb_zcl_on_off_attrs_t on_off_attr;
-	zb_zcl_level_control_attrs_t level_control_attr;
+    zb_zcl_basic_attrs_ext_t basic_attr;             // Basic cluster attributes
+    zb_zcl_identify_attrs_t identify_attr;           // Identify cluster attributes
+    zb_zcl_scenes_attrs_t scenes_attr;               // Scenes cluster attributes
+    zb_zcl_groups_attrs_t groups_attr;               // Groups cluster attributes
+    zb_zcl_on_off_attrs_t on_off_attr;               // On/Off cluster attributes
+    zb_zcl_level_control_attrs_t level_control_attr; // Level Control cluster attributes
 } bulb_device_ctx_t;
 
 /* Zigbee device application context storage. */
 static bulb_device_ctx_t dev_ctx;
 
+/* Declare the attribute list for the Identify cluster
+ * Defines the list of attributes for the Identify cluster, 
+ * which relates to the identification of the device (like blinking an LED).
+ */
 ZB_ZCL_DECLARE_IDENTIFY_ATTRIB_LIST(
-	identify_attr_list,
-	&dev_ctx.identify_attr.identify_time);
+    identify_attr_list,
+    &dev_ctx.identify_attr.identify_time);
 
+/* Declare the attribute list for the Groups cluster
+ * Defines the attributes for the Groups cluster (support for named groups).
+ */
 ZB_ZCL_DECLARE_GROUPS_ATTRIB_LIST(
-	groups_attr_list,
-	&dev_ctx.groups_attr.name_support);
+    groups_attr_list,
+    &dev_ctx.groups_attr.name_support);
 
+/* Declare the attribute list for the Scenes cluster
+ * Contains attributes for managing scenes, like the number of scenes
+ * and the current active scene.
+ */
 ZB_ZCL_DECLARE_SCENES_ATTRIB_LIST(
-	scenes_attr_list,
-	&dev_ctx.scenes_attr.scene_count,
-	&dev_ctx.scenes_attr.current_scene,
-	&dev_ctx.scenes_attr.current_group,
-	&dev_ctx.scenes_attr.scene_valid,
-	&dev_ctx.scenes_attr.name_support);
+    scenes_attr_list,
+    &dev_ctx.scenes_attr.scene_count,
+    &dev_ctx.scenes_attr.current_scene,
+    &dev_ctx.scenes_attr.current_group,
+    &dev_ctx.scenes_attr.scene_valid,
+    &dev_ctx.scenes_attr.name_support);
 
+/* Declare the attribute list for the Basic cluster
+ * Contains fundamental attributes such as version numbers, 
+ * manufacturer name, model ID, and power source.
+ */
 ZB_ZCL_DECLARE_BASIC_ATTRIB_LIST_EXT(
-	basic_attr_list,
-	&dev_ctx.basic_attr.zcl_version,
-	&dev_ctx.basic_attr.app_version,
-	&dev_ctx.basic_attr.stack_version,
-	&dev_ctx.basic_attr.hw_version,
-	dev_ctx.basic_attr.mf_name,
-	dev_ctx.basic_attr.model_id,
-	dev_ctx.basic_attr.date_code,
-	&dev_ctx.basic_attr.power_source,
-	dev_ctx.basic_attr.location_id,
-	&dev_ctx.basic_attr.ph_env,
-	dev_ctx.basic_attr.sw_ver);
+    basic_attr_list,
+    &dev_ctx.basic_attr.zcl_version,
+    &dev_ctx.basic_attr.app_version,
+    &dev_ctx.basic_attr.stack_version,
+    &dev_ctx.basic_attr.hw_version,
+    dev_ctx.basic_attr.mf_name,
+    dev_ctx.basic_attr.model_id,
+    dev_ctx.basic_attr.date_code,
+    &dev_ctx.basic_attr.power_source,
+    dev_ctx.basic_attr.location_id,
+    &dev_ctx.basic_attr.ph_env,
+    dev_ctx.basic_attr.sw_ver);
 
-/* On/Off cluster attributes additions data */
+/* Declare the attribute list for the On/Off cluster
+ * Lists the attributes for the On/Off cluster, typically whether the device is on or off.
+ */
 ZB_ZCL_DECLARE_ON_OFF_ATTRIB_LIST(
-	on_off_attr_list,
-	&dev_ctx.on_off_attr.on_off);
+    on_off_attr_list,
+    &dev_ctx.on_off_attr.on_off);
 
+/* Declare the attribute list for the Level Control cluster
+ * Contains attributes for controlling the level (brightness) of the light.
+ */
 ZB_ZCL_DECLARE_LEVEL_CONTROL_ATTRIB_LIST(
-	level_control_attr_list,
-	&dev_ctx.level_control_attr.current_level,
-	&dev_ctx.level_control_attr.remaining_time);
+    level_control_attr_list,
+    &dev_ctx.level_control_attr.current_level,
+    &dev_ctx.level_control_attr.remaining_time);
 
+/* Declare the list of clusters for the dimmable light device
+ * Combines all the previously defined attribute lists into one comprehensive list.
+ */
 ZB_DECLARE_DIMMABLE_LIGHT_CLUSTER_LIST(
-	dimmable_light_clusters,
-	basic_attr_list,
-	identify_attr_list,
-	groups_attr_list,
-	scenes_attr_list,
-	on_off_attr_list,
-	level_control_attr_list);
+    dimmable_light_clusters,
+    basic_attr_list,
+    identify_attr_list,
+    groups_attr_list,
+    scenes_attr_list,
+    on_off_attr_list,
+    level_control_attr_list);
 
-
+/* Declare the endpoint for the dimmable light device
+ * Associates it with the endpoint number DIMMABLE_LIGHT_ENDPOINT 
+ * and the cluster list dimmable_light_clusters.
+ */
 ZB_DECLARE_DIMMABLE_LIGHT_EP(
-	dimmable_light_ep,
-	DIMMABLE_LIGHT_ENDPOINT,
-	dimmable_light_clusters);
+    dimmable_light_ep,
+    DIMMABLE_LIGHT_ENDPOINT,
+    dimmable_light_clusters);
 
+/* Declare the device context for a device with one endpoint
+ * Associates it with the previously defined endpoint dimmable_light_ep.
+ */
 ZBOSS_DECLARE_DEVICE_CTX_1_EP(
-	dimmable_light_ctx,
-	dimmable_light_ep);
+    dimmable_light_ctx,
+    dimmable_light_ep);
 
 
 
@@ -198,20 +262,7 @@ ZBOSS_DECLARE_DEVICE_CTX_1_EP(
 
 
 // <-------------------------------------------------------------- My Stuff (START)
-// // Defining the RSSI values
-// typedef struct{
-// 	zb_int8_t rssi_value;
-// } rssi_report_attrs_t;
-
-// Defining the RSSI attributes
-typedef struct {
-    zb_int8_t rssi_value;
-} rssi_report_attrs_t;
-
-static rssi_report_attrs_t rssi_report_attrs = {
-    .rssi_value = 0
-};
-
+zb_ret_t zb_zcl_finish_and_send_packet(zb_bufid_t buffer, zb_uint8_t *ptr, const zb_addr_u *dst_addr, zb_uint8_t dst_addr_mode, zb_uint8_t dst_ep, zb_uint8_t src_ep, zb_uint16_t prof_id, zb_uint16_t cluster_id, zb_callback_t callback);
 static void energy_detection_callback(const struct device *dev, int8_t rssi, int status);
 static void promiscuous_mode_callback(const struct device *dev, struct net_pkt *pkt);
 static void start_energy_detection(struct net_if *iface);
@@ -222,28 +273,10 @@ static void rssi_measurement_handler(zb_bufid_t bufid);
 int8_t nrf_802154_rssi_last_get(void);
 // net_mgmt_NET_REQUEST_IEEE802154_ED_SCAN(struct net_if *iface, struct ieee802154_req_params *params, size_t len);
 // net_mgmt_NET_REQUEST_IEEE802154_SET_PROMISCUOUS_MODE(struct net_if *iface, bool *enable, size_t len);
-
-
-zb_ret_t zb_zcl_finish_and_send_packet(zb_bufid_t buffer, zb_uint8_t *ptr, const zb_addr_u *dst_addr, zb_uint8_t dst_addr_mode, zb_uint8_t dst_ep, zb_uint16_t prof_id, zb_uint16_t cluster_id, zb_callback_t callback);
-
-
-
-struct ieee802154_req_params {
-    uint8_t channel;
-    uint8_t duration;
-};
+// zb_ret_t zb_zcl_finish_and_send_packet(zb_bufid_t buffer, zb_uint8_t *ptr, const zb_addr_u *dst_addr, zb_uint8_t dst_addr_mode, zb_uint8_t dst_ep, zb_uint16_t prof_id, zb_uint16_t cluster_id, zb_callback_t callback);
 
 
 
-// Declare attribute list and cluster list
-ZB_ZCL_DECLARE_RSSI_REPORT_ATTRIB_LIST(rssi_report_attr_list, &rssi_report_attrs.rssi_value);
-ZB_ZCL_DECLARE_RSSI_REPORT_CLUSTER_LIST(rssi_report_cluster_list, rssi_report_attr_list);
-
-// Declare the endpoint
-ZB_DECLARE_RSSI_REPORT_EP(rssi_report_ep, RSSI_REPORT_ENDPOINT, rssi_report_cluster_list);
-
-// Declare device context
-ZBOSS_DECLARE_DEVICE_CTX_1_EP(rssi_report_ctx, rssi_report_ep);
 
 
 
@@ -268,7 +301,7 @@ static void send_rssi_value(zb_int8_t rssi_value){
 	// Creating a buffer variable
 	zb_bufid_t bufid;
 	zb_uint8_t *ptr;
-
+    
 	
 	// Allocate OUT buffer size
 	bufid = zb_buf_get_out();

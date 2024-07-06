@@ -8,6 +8,9 @@
         "zigbee_zcl_scenes.h": "c",
         "zigbee_error_handler.h": "c",
         "zb_mem_config_med.h": "c",
-        "zboss_api_zcl.h": "c"
+        "zboss_api_zcl.h": "c",
+        "zb_custom_cluster.h": "c",
+        "net_mgmt.h": "c",
+        "util_internal.h": "c"
     }
 }

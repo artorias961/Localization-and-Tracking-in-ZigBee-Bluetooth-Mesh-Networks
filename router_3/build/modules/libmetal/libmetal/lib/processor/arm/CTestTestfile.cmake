@@ -1,0 +1,6 @@
+# CMake generated Testfile for 
+# Source directory: C:/ncs/v2.6.1/modules/hal/libmetal/libmetal/lib/processor/arm
+# Build directory: C:/Users/artorias961/Desktop/Notas/Project/Thesis/router_3/build/modules/libmetal/libmetal/lib/processor/arm
+# 
+# This file includes the relevant testing commands required for 
+# testing this directory and lists subdirectories to be tested as well.

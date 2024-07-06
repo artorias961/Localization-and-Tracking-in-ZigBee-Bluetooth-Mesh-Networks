@@ -411,6 +411,13 @@ C:/Users/artorias961/Desktop/Notas/Project/Thesis/router/build/zephyr/subsys/net
 C:/Users/artorias961/Desktop/Notas/Project/Thesis/router/build/zephyr/subsys/net/l2/CMakeFiles/rebuild_cache.dir
 C:/Users/artorias961/Desktop/Notas/Project/Thesis/router/build/zephyr/subsys/net/l2/CMakeFiles/list_install_components.dir
 C:/Users/artorias961/Desktop/Notas/Project/Thesis/router/build/zephyr/subsys/net/l2/CMakeFiles/install/strip.dir
+C:/Users/artorias961/Desktop/Notas/Project/Thesis/router/build/zephyr/subsys/net/l2/ieee802154/CMakeFiles/install/strip.dir
+C:/Users/artorias961/Desktop/Notas/Project/Thesis/router/build/zephyr/subsys/net/l2/ieee802154/CMakeFiles/subsys__net__l2__ieee802154.dir
+C:/Users/artorias961/Desktop/Notas/Project/Thesis/router/build/zephyr/subsys/net/l2/ieee802154/CMakeFiles/install/local.dir
+C:/Users/artorias961/Desktop/Notas/Project/Thesis/router/build/zephyr/subsys/net/l2/ieee802154/CMakeFiles/install.dir
+C:/Users/artorias961/Desktop/Notas/Project/Thesis/router/build/zephyr/subsys/net/l2/ieee802154/CMakeFiles/edit_cache.dir
+C:/Users/artorias961/Desktop/Notas/Project/Thesis/router/build/zephyr/subsys/net/l2/ieee802154/CMakeFiles/rebuild_cache.dir
+C:/Users/artorias961/Desktop/Notas/Project/Thesis/router/build/zephyr/subsys/net/l2/ieee802154/CMakeFiles/list_install_components.dir
 C:/Users/artorias961/Desktop/Notas/Project/Thesis/router/build/zephyr/subsys/net/pkt_filter/CMakeFiles/install/local.dir
 C:/Users/artorias961/Desktop/Notas/Project/Thesis/router/build/zephyr/subsys/net/pkt_filter/CMakeFiles/install.dir
 C:/Users/artorias961/Desktop/Notas/Project/Thesis/router/build/zephyr/subsys/net/pkt_filter/CMakeFiles/edit_cache.dir

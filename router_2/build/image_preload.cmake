@@ -1,0 +1,13 @@
+# Generated file that can be used to preload variant images
+set(802154_rpmsg_OVERLAY_CONFIG "C:/ncs/v2.6.1/nrf/subsys/partition_manager/partition_manager_enabled.conf;C:/ncs/v2.6.1/nrf/subsys/bootloader/image/secure_boot.conf" CACHE INTERNAL "NCS child image controlled")
+set(BOARD "nrf5340dk_nrf5340_cpuapp" CACHE INTERNAL "NCS child image controlled")
+set(BOARD_ROOT "c:/users/artorias961/desktop/notas/project/thesis/router_2;C:/ncs/v2.6.1/nrf;C:/ncs/v2.6.1/zephyr" CACHE INTERNAL "NCS child image controlled")
+set(CACHED_CONF_FILE "c:/Users/artorias961/Desktop/Notas/Project/Thesis/router_2/prj_fota.conf;c:/Users/artorias961/Desktop/Notas/Project/Thesis/router_2/boards/nrf5340dk_nrf5340_cpuapp_fota.conf" CACHE INTERNAL "NCS child image controlled")
+set(CONF_FILE_BUILD_TYPE "" CACHE INTERNAL "NCS child image controlled")
+set(DTC_OVERLAY_FILE "c:/Users/artorias961/Desktop/Notas/Project/Thesis/router_2/boards/nrf5340dk_nrf5340_cpuapp.overlay" CACHE INTERNAL "NCS child image controlled")
+set(NCS_TOOLCHAIN_VERSION "NONE" CACHE INTERNAL "NCS child image controlled")
+set(WEST_PYTHON "C:/ncs/toolchains/cf2149caf2/opt/bin/python.exe" CACHE INTERNAL "NCS child image controlled")
+set(mcuboot_CONF_FILE "C:/Users/artorias961/Desktop/Notas/Project/Thesis/router_2/child_image/mcuboot/boards/nrf5340dk_nrf5340_cpuapp_fota.conf" CACHE INTERNAL "NCS child image controlled")
+set(mcuboot_DTC_OVERLAY_FILE "C:/ncs/v2.6.1/nrf/modules/mcuboot/flash_sim.overlay;C:/ncs/v2.6.1/nrf/modules/mcuboot/usb.overlay;C:/Users/artorias961/Desktop/Notas/Project/Thesis/router_2/child_image/mcuboot/boards/nrf5340dk_nrf5340_cpuapp_fota.overlay" CACHE INTERNAL "NCS child image controlled")
+set(mcuboot_DTC_OVERLAY_FILE "C:/ncs/v2.6.1/nrf/modules/mcuboot/flash_sim.overlay;C:/ncs/v2.6.1/nrf/modules/mcuboot/usb.overlay;C:/Users/artorias961/Desktop/Notas/Project/Thesis/router_2/child_image/mcuboot/boards/nrf5340dk_nrf5340_cpuapp_fota.overlay" CACHE INTERNAL "NCS child image controlled")
+set(mcuboot_OVERLAY_CONFIG "C:/ncs/v2.6.1/nrf/subsys/pcd/pcd.conf;C:/ncs/v2.6.1/nrf/subsys/partition_manager/ext_flash_mcuboot_secondary.conf;C:/ncs/v2.6.1/nrf/subsys/partition_manager/partition_manager_enabled.conf" CACHE INTERNAL "NCS child image controlled")

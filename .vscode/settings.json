@@ -4,5 +4,6 @@
         "${workspaceFolder}\\sensor_server",
         "${workspaceFolder}\\zigbee\\network_coordinator"
     ],
-    "esbonio.sphinx.confDir": ""
+    "esbonio.sphinx.confDir": "",
+    "iis.configDir": ""
 }
