@@ -1,4 +1,19 @@
 # Personal Notes
+
+## How the nrf53dk dual core works
+
+The dual-core architecture of the nRF53 series features an Application core and a Network core, both based on the Cortex-M33. The Application core runs user applications, while the Network core handles protocol stacks like Bluetooth or Zigbee. They communicate via Inter-Processor Communication (IPC). This design allows for efficient task separation and enhanced performance, with the Application core managing main application logic and the Network core dedicated to network operations.
+
+<p align="center">
+  <img  src="https://github.com/artorias961/thesis/assets/54751574/5045080a-6a2b-4766-a8b5-09f9f6991623">
+</p>
+
+
+
+
+
+## General information of Zigbee samples
+
 These [samples](https://developer.nordicsemi.com/nRF_Connect_SDK/doc/2.6.1/nrf/samples/zigbee.html) are designed to work with Nordic Semiconductor's development kits, such as the nRF52840 DK or the nRF5340 DK. 
 
 - Zigbee Light Bulb: This sample demonstrates how to create a **Zigbee router node**. It implements a simple light bulb device that can be controlled by a Zigbee coordinator.
@@ -10,6 +25,9 @@ These [samples](https://developer.nordicsemi.com/nRF_Connect_SDK/doc/2.6.1/nrf/s
 - Zigbee Shell: The Zigbee Shell sample is designed to provide an interactive command-line interface (CLI) for configuring and managing a Zigbee network **(Zigbee router or Coordinator)**
 [text](about:blank#blocked)
 - Zigbee Template: The Zigbee Template sample provides a minimal implementation of a **Zigbee router**, serving as a starting point for custom Zigbee applications
+
+
+
 
 
 ## Zigbee Cluster Library
