@@ -29,6 +29,44 @@ Make sure the **build configuration** is set to one of the prj else mess with th
 # Thread 
 Thread is an IPv6-based wireless networking protocol designed for low-power, secure, and scalable mesh networks. It allows seamless integration with IP networks without needing proprietary gateways.
 
+<p align="center">
+  <img  src="https://github.com/user-attachments/assets/d75d89c1-39c5-4f9f-be04-5b87cc8f636b">
+</p>
+
+
+## General information for Thread Samples
+- [OpenThread Overview](https://developer.nordicsemi.com/nRF_Connect_SDK/doc-legacy/2.6.1/nrf/protocols/thread/overview/index.html): Details on using the OpenThread stack integrated with Zephyr. OpenThread is an open-source implementation of the Thread networking protocol, provided by Google and integrated with Zephyr RTOS in the nRF Connect SDK. This section provides a comprehensive overview of how OpenThread is used within the SDK, including its benefits and key features.
+ 
+- [Configuring Thread](https://developer.nordicsemi.com/nRF_Connect_SDK/doc-legacy/2.6.1/nrf/protocols/thread/configuring.html): Guidelines for configuring Thread in the nRF Connect SDK. This section details the necessary steps and configurations to set up Thread in the nRF Connect SDK. It covers how to enable Thread support, configure network parameters, and adjust various settings to optimize performance and functionality.
+ 
+- [Pre-built Libraries](https://developer.nordicsemi.com/nRF_Connect_SDK/doc-legacy/2.6.1/nrf/protocols/thread/prebuilt_libs.html): Access to pre-compiled Thread libraries. The nRF Connect SDK includes pre-compiled Thread libraries to simplify the development process. These libraries provide essential functionalities required for implementing Thread-based applications, allowing developers to quickly integrate and deploy Thread networks.
+
+- [Thread Tools](https://developer.nordicsemi.com/nRF_Connect_SDK/doc-legacy/2.6.1/nrf/protocols/thread/tools.html): Tools for development and testing. A set of tools is available to aid in the development, testing, and debugging of Thread networks. These tools include network simulators, packet sniffers, and commissioning tools, which help ensure that the Thread network operates correctly and efficiently.
+
+- [Thread Certification](https://developer.nordicsemi.com/nRF_Connect_SDK/doc-legacy/2.6.1/nrf/protocols/thread/certification.html): Certification process information. Information about the Thread certification process is provided to help developers ensure that their products meet the required standards for interoperability and performance. This includes guidelines on testing and validation procedures. 
+
+- [Thread Device Types](https://developer.nordicsemi.com/nRF_Connect_SDK/doc-legacy/2.6.1/nrf/protocols/thread/device_types.html): Explains various Thread device types, including Sleepy End Devices. This section explains the different types of devices within a Thread network, such as Full Thread Devices (FTDs) and Minimal Thread Devices (MTDs), including Sleepy End Devices. Each device type has specific roles and characteristics that contribute to the overall network functionality.
+
+- [Sleepy End Device types in Thread](https://developer.nordicsemi.com/nRF_Connect_SDK/doc-legacy/2.6.1/nrf/protocols/thread/sed_ssed.html):
+   - **Sleepy End Device (SED)**: These are Minimal Thread Devices (MTDs) that spend most of their time in a sleep state to conserve power. They wake up periodically to check for messages from their parent router
+   - **Synchronized Sleepy End Device (SSED)**: These devices are further optimized for power consumption by synchronizing their communication with their parent router, using Coordinated Sampled Listening (CSL). This reduces the need for frequent polling and lowers power usage even further
+  
+- [Commissioning Over Authenticated TLS](https://developer.nordicsemi.com/nRF_Connect_SDK/doc-legacy/2.6.1/nrf/protocols/thread/tcat.html): Secure commissioning methods. Secure commissioning methods are essential for maintaining the integrity and security of a Thread network. This section describes how to use Authenticated TLS (Transport Layer Security) for the secure commissioning of Thread devices, ensuring that only authorized devices can join the network.
+
+
+## Thread Roles
+
+- **End Device**: Communicates through a parent router, conserving power by sleeping.
+- **Thread Router**: Provides routing and security services.
+- **Thread Leader**: Dynamically elected to manage network configuration.
+- **Border Router**: Connects Thread networks to external networks.
+
+*Note:* ***Thread link*** *refers to the communication pathway between devices in a Thread network. This link enables devices to send and receive messages within the mesh network, supporting seamless communication and ensuring data can be routed efficiently across the network.*
+
+
+
+
+
 
 # PHY Test Tool (Physical Layer) 
 The physical layer is responsible for the transmission and reception of raw data bits over a physical medium, such as radio waves. It defines the hardware technologies used to connect devices and manage data transmission rates, modulation, and signal strength.
