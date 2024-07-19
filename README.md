@@ -8,6 +8,17 @@ The dual-core architecture of the nRF53 series features an Application core and 
   <img  src="https://github.com/artorias961/thesis/assets/54751574/5045080a-6a2b-4766-a8b5-09f9f6991623">
 </p>
 
+# ZephyrRTOS
+The [Nordic Zephyr RTOS](https://docs.nordicsemi.com/bundle/ncs-latest/page/zephyr/index.html) is an open-source real-time operating system tailored for Nordic Semiconductor’s nRF series of SoCs. It provides a scalable, feature-rich platform for developing low-power, connected devices, supporting multiple communication protocols like Bluetooth, Zigbee, and Thread. The RTOS includes essential features such as multi-threading, inter-thread communication, and hardware abstraction, enabling efficient and reliable application development for IoT solutions.
+
+
+
+## K_thread
+[k_thread](https://docs.zephyrproject.org/latest/kernel/services/threads/index.html) is part of the Zephyr RTOS, designed to manage threads, which are the basic units of execution. It provides APIs for creating, configuring, and managing threads, allowing developers to implement concurrent tasks efficiently. Key functionalities include thread creation, setting priorities, suspension, resumption, and inter-thread communication.
+
+
+
+
 
 # Thread 
 Thread is an IPv6-based wireless networking protocol designed for low-power, secure, and scalable mesh networks. It allows seamless integration with IP networks without needing proprietary gateways.
