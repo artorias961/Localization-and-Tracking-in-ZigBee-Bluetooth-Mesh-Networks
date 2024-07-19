@@ -8,23 +8,6 @@ The dual-core architecture of the nRF53 series features an Application core and 
   <img  src="https://github.com/artorias961/thesis/assets/54751574/5045080a-6a2b-4766-a8b5-09f9f6991623">
 </p>
 
-## PRJ Issues (SDK 2.6.1 VERSION ONLY)
-
-### CONFIG_NET_L2_IEEE802154_MGMT
-Is assigned in a configuration file, but is not directly user confiirable (has no prompt). It gets its calue indirectly from other symbols and the link the terminal provides is [Link](https://docs.zephyrproject.org/latest/kconfig.html#CONFIG_NET_L2_IEEE802154_MGMT). *Which is a dead link so i cant tell what variables i need for my network management*. So i modify the search bar with this [Link](https://docs.zephyrproject.org/latest/kconfig.html#CONFIG_NET_L2_IEEE802154_MGMT).
-
-If enable CONFIG_NET_L2_IEEE802154_MGMT then an error will be prompted when compiling and the function does not exist in ZephyrRTOS anymore. Need to find another way to get **NET_REQUEST_IEEE802154_ED_SCAN** or the new naming variable. 
-
-
-## No crypto suite for zignee stack has been selected
-
-Make sure the **build configuration** is set to one of the prj else mess with the cpu board flasher
-
-## Nordic Website Error List
-
-[Issues with 2.6.1 and resolving them in 2.7.0](https://docs.nordicsemi.com/bundle/ncs-latest/page/nrf/releases_and_maturity/known_issues.html#known-issues)
-
-
 
 # Thread 
 Thread is an IPv6-based wireless networking protocol designed for low-power, secure, and scalable mesh networks. It allows seamless integration with IP networks without needing proprietary gateways.
