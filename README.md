@@ -26,10 +26,11 @@ Make sure the **build configuration** is set to one of the prj else mess with th
 
 
 
+# Thread 
+Thread is an IPv6-based wireless networking protocol designed for low-power, secure, and scalable mesh networks. It allows seamless integration with IP networks without needing proprietary gateways.
 
 
-
-# PHY (Physical Layer) 
+# PHY Test Tool (Physical Layer) 
 The physical layer is responsible for the transmission and reception of raw data bits over a physical medium, such as radio waves. It defines the hardware technologies used to connect devices and manage data transmission rates, modulation, and signal strength.
 
 
