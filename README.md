@@ -8,9 +8,43 @@ The dual-core architecture of the nRF53 series features an Application core and 
   <img  src="https://github.com/artorias961/thesis/assets/54751574/5045080a-6a2b-4766-a8b5-09f9f6991623">
 </p>
 
+## PRJ Issues (SDK 2.6.1 VERSION ONLY)
+
+### CONFIG_NET_L2_IEEE802154_MGMT
+Is assigned in a configuration file, but is not directly user confiirable (has no prompt). It gets its calue indirectly from other symbols and the link the terminal provides is [Link](https://docs.zephyrproject.org/latest/kconfig.html#CONFIG_NET_L2_IEEE802154_MGMT). *Which is a dead link so i cant tell what variables i need for my network management*. So i modify the search bar with this [Link](https://docs.zephyrproject.org/latest/kconfig.html#CONFIG_NET_L2_IEEE802154_MGMT).
+
+If enable CONFIG_NET_L2_IEEE802154_MGMT then an error will be prompted when compiling and the function does not exist in ZephyrRTOS anymore. Need to find another way to get **NET_REQUEST_IEEE802154_ED_SCAN** or the new naming variable. 
+
+
+## No crypto suite for zignee stack has been selected
+
+Make sure the **build configuration** is set to one of the prj else mess with the cpu board flasher
+
+## Nordic Website Error List
+
+[Issues with 2.6.1 and resolving them in 2.7.0](https://docs.nordicsemi.com/bundle/ncs-latest/page/nrf/releases_and_maturity/known_issues.html#known-issues)
 
 
 
+
+
+
+# PHY (Physical Layer) 
+The physical layer is responsible for the transmission and reception of raw data bits over a physical medium, such as radio waves. It defines the hardware technologies used to connect devices and manage data transmission rates, modulation, and signal strength.
+
+
+## General information for PHY Test Tool Samples
+
+- [Low Power UART (LPUART)](https://docs.nordicsemi.com/bundle/ncs-latest/page/nrf/samples/peripheral/lpuart/README.html): This sample demonstrates the use of the Low Power UART (LPUART) driver. LPUART is designed for applications where power consumption is a concern and allows the UART to operate in a low-power mode.
+
+- [Radio Test](https://docs.nordicsemi.com/bundle/ncs-latest/page/nrf/samples/peripheral/radio_test/README.html): This sample provides a framework for testing the radio performance of Nordic Semiconductor devices. It allows you to evaluate and measure the radio's capabilities under various conditions.
+
+- [IEEE 802.15.4 Sniffer Sample](https://docs.nordicsemi.com/bundle/ncs-latest/page/nrf/samples/peripheral/802154_sniffer/README.html): This sample provides an implementation of a packet sniffer for IEEE 802.15.4 (any wireless communication protocols)
+
+- [IEEE 802.15.4 PHY Test](https://docs.nordicsemi.com/bundle/ncs-latest/page/nrf/samples/peripheral/802154_phy_test/README.html): This sample demonstrates how to test the physical layer (PHY) of IEEE 802.15.4 communication, focusing on the modulation and demodulation processes.
+
+
+# Zigbee 
 
 ## General information of Zigbee samples
 
@@ -23,7 +57,7 @@ These [samples](https://developer.nordicsemi.com/nRF_Connect_SDK/doc/2.6.1/nrf/s
 - Zigbee Network Coordinator: This is for the **coordinator role**, it provides a example of how to set up a Zigbee coordinator to manage the network.
 
 - Zigbee Shell: The Zigbee Shell sample is designed to provide an interactive command-line interface (CLI) for configuring and managing a Zigbee network **(Zigbee router or Coordinator)**
-[text](about:blank#blocked)
+
 - Zigbee Template: The Zigbee Template sample provides a minimal implementation of a **Zigbee router**, serving as a starting point for custom Zigbee applications
 
 
@@ -228,22 +262,6 @@ void set_promiscuous_mode(struct net_if *iface, bool enable) {
 
 
 
-# PRJ Issues (SDK 2.6.1 VERSION ONLY)
-
-## CONFIG_NET_L2_IEEE802154_MGMT
-Is assigned in a configuration file, but is not directly user confiirable (has no prompt). It gets its calue indirectly from other symbols and the link the terminal provides is [Link](https://docs.zephyrproject.org/latest/kconfig.html#CONFIG_NET_L2_IEEE802154_MGMT). *Which is a dead link so i cant tell what variables i need for my network management*. So i modify the search bar with this [Link](https://docs.zephyrproject.org/latest/kconfig.html#CONFIG_NET_L2_IEEE802154_MGMT).
-
-If enable CONFIG_NET_L2_IEEE802154_MGMT then an error will be prompted when compiling and the function does not exist in ZephyrRTOS anymore. Need to find another way to get **NET_REQUEST_IEEE802154_ED_SCAN** or the new naming variable. 
-
-
-## No crypto suite for zignee stack has been selected
-
-Make sure the **build configuration** is set to one of the prj else mess with the cpu board flasher
-
-## Nordic Website Error List
-
-[Issues with 2.6.1 and resolving them in 2.7.0](https://docs.nordicsemi.com/bundle/ncs-latest/page/nrf/releases_and_maturity/known_issues.html#known-issues)
-
 
 
 
@@ -340,11 +358,6 @@ Make sure the **build configuration** is set to one of the prj else mess with th
 - Zigbee Errors Solution
    - [Link 1](https://devzone.nordicsemi.com/f/nordic-q-a/60644/combine-zigbee-roles-or-start-a-network-of-two-devices)
 
-# Stuff to do 
-
-
-
-Always scanning and sending (whenever someone ask to joion the commincuaton) (BLE NOTIFY ESSENTAILLY)
 
 
 

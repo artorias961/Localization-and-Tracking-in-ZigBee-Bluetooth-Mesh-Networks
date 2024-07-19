@@ -1,0 +1,9 @@
+{
+    "iis.configDir": "",
+    "nrf-connect.applications": [
+        "${workspaceFolder}\\802154_phy_test"
+    ],
+    "files.associations": {
+        "kernel.h": "c"
+    }
+}
