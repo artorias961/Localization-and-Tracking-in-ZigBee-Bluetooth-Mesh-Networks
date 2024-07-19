@@ -13,11 +13,17 @@ The [Nordic Zephyr RTOS](https://docs.nordicsemi.com/bundle/ncs-latest/page/zeph
 
 
 
-## K_thread
+## K_THREAD
 [k_thread](https://docs.zephyrproject.org/latest/kernel/services/threads/index.html) is part of the Zephyr RTOS, designed to manage threads, which are the basic units of execution. It provides APIs for creating, configuring, and managing threads, allowing developers to implement concurrent tasks efficiently. Key functionalities include thread creation, setting priorities, suspension, resumption, and inter-thread communication.
 
-
-
+## K_THREAD_STACK
+The [K_THREAD_STACK](https://docs.zephyrproject.org/latest/kernel/services/threads/index.html#thread-stack-objects) macro in Zephyr RTOS is used to define the stack memory for a thread. It allocates and initializes a memory region that the thread will use for its stack, which is necessary for storing the thread's context, including local variables, function calls, and return addresses.
+```c
+K_THREAD_STACK_DEFINE(stack_area, stack_size);
+```
+- Note:
+   - stack_area: The name of the stack area
+   - stack_size: The size of the stack in bytes
 
 
 # Thread 
