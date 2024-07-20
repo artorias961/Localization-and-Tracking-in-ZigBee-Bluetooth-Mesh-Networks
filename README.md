@@ -1,4 +1,5 @@
 # Personal Notes
+[Nordic All Samples](https://docs.nordicsemi.com/bundle/ncs-latest/page/nrf/samples.html)
 
 ## Deciding a network protocol
 [OpenThread](https://docs.nordicsemi.com/bundle/ncs-latest/page/nrf/protocols/thread/overview/index.html) is an open-source implementation of the Thread protocol, released and maintained by Nest (Google). It offers flexible development and rapid prototyping with robust security and broad platform support. OpenThread is free to use and benefits from a strong open-source community and Google support.
@@ -93,7 +94,20 @@ In summary, while Thread is a standardized protocol for creating low-power, secu
 </p>
 
 
-## General information for Thread Samples
+## General information for OpenThread Samples
+
+
+- [CLI Sample](https://docs.nordicsemi.com/bundle/ncs-latest/page/nrf/samples/openthread/cli/README.html): Demonstrates the use of the Command Line Interface (CLI) for interacting with the Thread network. It enables developers to send commands and receive responses to control and monitor the network.
+
+- [CoAP Client](https://docs.nordicsemi.com/bundle/ncs-latest/page/nrf/samples/openthread/coap_client/README.html): Implements a CoAP (Constrained Application Protocol) client that sends requests to a CoAP server over a Thread network.
+
+- [CoAP Server](https://docs.nordicsemi.com/bundle/ncs-latest/page/nrf/samples/openthread/coap_server/README.html): Demonstrates a CoAP server that responds to CoAP requests from CoAP clients, handling various resource operations.
+
+- [Coprocessor](https://docs.nordicsemi.com/bundle/ncs-latest/page/nrf/samples/openthread/coprocessor/README.html): Shows how to use a Thread network coprocessor, offloading the Thread protocol stack to a dedicated processor to optimize performance and power consumption.
+
+
+
+## General information for Thread Sub Topics
 - [OpenThread Overview](https://developer.nordicsemi.com/nRF_Connect_SDK/doc-legacy/2.6.1/nrf/protocols/thread/overview/index.html): Details on using the OpenThread stack integrated with Zephyr. OpenThread is an open-source implementation of the Thread networking protocol, provided by Google and integrated with Zephyr RTOS in the nRF Connect SDK. This section provides a comprehensive overview of how OpenThread is used within the SDK, including its benefits and key features.
  
 - [Configuring Thread](https://developer.nordicsemi.com/nRF_Connect_SDK/doc-legacy/2.6.1/nrf/protocols/thread/configuring.html): Guidelines for configuring Thread in the nRF Connect SDK. This section details the necessary steps and configurations to set up Thread in the nRF Connect SDK. It covers how to enable Thread support, configure network parameters, and adjust various settings to optimize performance and functionality.
