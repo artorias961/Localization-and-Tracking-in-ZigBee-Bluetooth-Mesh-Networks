@@ -10,6 +10,8 @@
 #include <ram_pwrdn.h>
 #include <zephyr/device.h>
 #include <zephyr/pm/device.h>
+#include <openthread/instance.h>
+#include <openthread/link.h>
 
 #include "coap_client_utils.h"
 
@@ -109,6 +111,7 @@ static void on_button_changed(uint32_t button_state, uint32_t has_changed)
 
 	if (buttons & DK_BTN2_MSK) {
 		coap_client_toggle_mesh_lights();
+		get_and_print_rssi();
 	}
 
 	if (buttons & DK_BTN3_MSK) {
@@ -120,9 +123,37 @@ static void on_button_changed(uint32_t button_state, uint32_t has_changed)
 	}
 }
 
+void get_and_print_rssi(void){
+	otInstance *instance = openthread_get_default_instance();
+	int8_t rssi;
+	// int8_t avg_rssi;
+	otError error;
+
+	instance = otInstanceInitSingle();
+	if(instance == NULL){
+		LOG_ERR("Failed to get OpenThread instance");
+		return 0;
+	}
+	// rssi = otThreadGetParentLastRssi(instance);
+	// avg_rssi = otThreadGetParentAverageRssi();
+	// LOG_WRN("Parent Last RSSI: %d dBm\n", rssi);
+
+	error = otThreadGetParentLastRssi(instance, &rssi);
+    if (error == OT_ERROR_NONE) {
+        LOG_INF("Parent Last RSSI: %d dBm", rssi);
+		printk("Parent Last RSSI: %d dBm", rssi);
+    } else {
+        LOG_ERR("Failed to get RSSI: %d", error);
+    }
+
+}
+
 int main(void)
 {
 	int ret;
+
+	// otInstance *instance;
+	// int8_t rssi;
 
 	LOG_INF("Start CoAP-client sample");
 
@@ -140,6 +171,9 @@ int main(void)
 	if (ret) {
 		LOG_ERR("Cannot init leds, (error: %d)", ret);
 		return 0;
+
+	
+
 	}
 
 #if CONFIG_BT_NUS

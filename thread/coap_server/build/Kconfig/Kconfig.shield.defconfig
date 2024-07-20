@@ -1,0 +1,2 @@
+osource "c:/users/artorias961/desktop/notas/project/thesis/thread/coap_server/boards/shields/*/Kconfig.defconfig"
+osource "C:/ncs/v2.6.1/nrf/boards/shields/*/Kconfig.defconfig"

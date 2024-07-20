@@ -9,6 +9,7 @@
 #include <zephyr/logging/log.h>
 #include <zephyr/net/openthread.h>
 #include <openthread/thread.h>
+#include <openthread/link.h>
 
 #include "ot_coap_utils.h"
 
@@ -21,6 +22,10 @@ LOG_MODULE_REGISTER(coap_server, CONFIG_COAP_SERVER_LOG_LEVEL);
 #define COAP_SERVER_WORKQ_STACK_SIZE 512
 #define COAP_SERVER_WORKQ_PRIORITY 5
 
+
+
+
+
 K_THREAD_STACK_DEFINE(coap_server_workq_stack_area, COAP_SERVER_WORKQ_STACK_SIZE);
 static struct k_work_q coap_server_workq;
 
@@ -28,6 +33,7 @@ static struct k_work provisioning_work;
 
 static struct k_timer led_timer;
 static struct k_timer provisioning_timer;
+
 
 static void on_light_request(uint8_t command)
 {
@@ -52,6 +58,8 @@ static void on_light_request(uint8_t command)
 	default:
 		break;
 	}
+	// calling the rssi
+	get_and_print_rssi();
 }
 
 static void activate_provisioning(struct k_work *item)
@@ -133,11 +141,39 @@ static void on_thread_state_changed(otChangedFlags flags, struct openthread_cont
 static struct openthread_state_changed_cb ot_state_chaged_cb = { .state_changed_cb =
 									 on_thread_state_changed };
 
+
+void get_and_print_rssi(void){
+	otInstance *instance = openthread_get_default_instance();
+	int8_t rssi;
+	int8_t avg_rssi;
+	otError error;
+
+	instance = otInstanceInitSingle();
+	if(instance == NULL){
+		LOG_ERR("Failed to get OpenThread instance");
+		return 0;
+	}
+	// rssi = otThreadGetParentLastRssi(instance);
+	// avg_rssi = otThreadGetParentAverageRssi();
+	// LOG_WRN("Parent Last RSSI: %d dBm\n", rssi);
+
+	error = otThreadGetParentLastRssi(instance, &rssi);
+    if (error == OT_ERROR_NONE) {
+        LOG_INF("Parent Last RSSI: %d dBm", rssi);
+    } else {
+        LOG_ERR("Failed to get RSSI: %d", error);
+    }
+
+}
+
+
 int main(void)
 {
 	int ret;
+	
 
 	LOG_INF("Start CoAP-server sample");
+
 
 	k_timer_init(&led_timer, on_led_timer_expiry, on_led_timer_stop);
 	k_timer_init(&provisioning_timer, on_provisioning_timer_expiry, NULL);
@@ -168,6 +204,7 @@ int main(void)
 
 	openthread_state_changed_cb_register(openthread_get_default_context(), &ot_state_chaged_cb);
 	openthread_start(openthread_get_default_context());
+
 
 end:
 	return 0;
