@@ -26,6 +26,13 @@ K_THREAD_STACK_DEFINE(stack_area, stack_size);
    - stack_size: The size of the stack in bytes
 
 
+
+## Symmetric Multiprocessing
+The Zephyr Project documentation on [Symmetric Multiprocessing (SMP)](https://docs.zephyrproject.org/latest/kernel/services/smp/smp.html) explains how Zephyr supports multiple CPUs running application code simultaneously. It covers the configuration, synchronization using spinlocks, SMP boot process, interprocessor interrupts, and managing per-CPU data. The document highlights the differences between uniprocessor and multiprocessor systems, emphasizing the use of spinlocks over traditional interrupt locks for critical sections, and details APIs for managing CPU-specific tasks and interprocessor communication. In our case, we have 1 core for application and another core for net. If it was 2 cores for application and 1 core for net then the symmetric multiprocessing will work.
+
+
+
+
 # Thread 
 Thread is an IPv6-based wireless networking protocol designed for low-power, secure, and scalable mesh networks. It allows seamless integration with IP networks without needing proprietary gateways.
 
