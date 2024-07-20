@@ -1,5 +1,34 @@
 # Personal Notes
 
+## Deciding a network protocol
+[OpenThread](https://docs.nordicsemi.com/bundle/ncs-latest/page/nrf/protocols/thread/overview/index.html) is an open-source implementation of the Thread protocol, released and maintained by Nest (Google). It offers flexible development and rapid prototyping with robust security and broad platform support. OpenThread is free to use and benefits from a strong open-source community and Google support.
+
+[Thread](https://www.nordicsemi.com/Products/Wireless/Thread) is a proprietary protocol maintained by the Thread Group. It is designed for general IoT applications, providing robust security, IPv6-based communication, and reliable mesh networking. However, it requires membership fees for full access.
+
+[Matter](https://www.nordicsemi.com/Products/Technologies/Matter), developed by the Connectivity Standards Alliance (CSA), aims to provide interoperable smart home and building devices. It combines open-source and proprietary components, offering strong security and broad support across different platforms. While it is generally free to use, some certification costs may apply.
+
+[Zigbee](https://www.nordicsemi.com/Products/Wireless/Zigbee), developed by the Zigbee Alliance, is a widely adopted protocol for home automation and industrial applications. It uses the IEEE 802.15.4 standard for mesh networking and offers robust security with AES-128 encryption. Zigbee is supported by many vendors and platforms, and while it is free to use, some components may have proprietary elements and certification costs.
+
+
+
+<p align="center">
+
+| Feature              | OpenThread                       | Thread                          | Matter                                   | Zigbee                                   |
+|----------------------|----------------------------------|---------------------------------|------------------------------------------|------------------------------------------|
+| **Nature**           | Open-source implementation       | Protocol                        | Protocol                                 | Protocol                                 |
+| **Development**      | Released and maintained by Nest (Google) | Maintained by Thread Group      | Developed by the Connectivity Standards Alliance (CSA) | Developed by the Zigbee Alliance         |
+| **Licensing**        | Open-source (BSD 3-Clause License) | Proprietary, requires membership for full access | Open-source, proprietary components      | Open standard, some components may be proprietary |
+| **Certification**    | Thread 1.1 compliant component   | Thread-certified                | Matter-certified                         | Zigbee-certified                         |
+| **Platform Support** | Flexible, supports various hardware platforms | Specific to Thread devices      | Broad support across different platforms | Supported by many vendors and platforms |
+| **Community**        | Open-source community, Google support | Industry consortium             | Industry consortium (CSA)                | Industry consortium (Zigbee Alliance)    |
+| **Cost**             | Free to use                      | Requires membership fees        | Free to use, some certification costs    | Free to use, some certification costs    |
+| **Use Case**         | Flexible development and rapid prototyping | General IoT applications        | Interoperable smart home and building devices | Home automation, industrial applications |
+| **Security**         | Robust security with AES-128 encryption | Robust security with AES-128 encryption | Strong security with built-in encryption | Robust security with AES-128 encryption |
+| **Communication**    | IPv6-based, low-power, mesh network | IPv6-based, low-power, mesh network | IPv6-based, supports multiple network layers | IEEE 802.15.4, mesh network              |
+
+</p>
+
+
 ## How the nrf53dk dual core works
 
 The dual-core architecture of the nRF53 series features an Application core and a Network core, both based on the Cortex-M33. The Application core runs user applications, while the Network core handles protocol stacks like Bluetooth or Zigbee. They communicate via Inter-Processor Communication (IPC). This design allows for efficient task separation and enhanced performance, with the Application core managing main application logic and the Network core dedicated to network operations.
@@ -38,6 +67,29 @@ Thread is an IPv6-based wireless networking protocol designed for low-power, sec
 
 <p align="center">
   <img  src="https://github.com/user-attachments/assets/d75d89c1-39c5-4f9f-be04-5b87cc8f636b">
+</p>
+
+
+## What is the difference between Thread and OpenThread
+Thread is a low-power, IPv6-based wireless networking protocol designed for IoT applications. It aims to create reliable and secure mesh networks, primarily for smart home and building automation. Developed and maintained by the Thread Group, Thread enables devices to form a self-healing and scalable network, uses IPv6 addressing for large-scale deployment and internet connectivity, and is optimized for battery-operated devices. Thread also provides robust security using AES-128 encryption and secure commissioning while ensuring interoperability among devices from different manufacturers.
+
+OpenThread, on the other hand, is an open-source implementation of the Thread networking protocol, released by Nest (now part of Google). OpenThread offers the same core functionalities as the Thread protocol but with the added benefits of being open-source. It is freely available under the BSD 3-Clause license, allowing developers to view, modify, and contribute to the source code. OpenThread is certified as a Thread 1.1 compliant component, ensuring full compatibility with the Thread specification. It can run on various hardware platforms and integrate with different operating systems, supported by a vibrant community and continuous development from Google and other contributors. Additionally, OpenThread comes with extensive documentation, development tools, and examples to help developers get started quickly.
+
+In summary, while Thread is a standardized protocol for creating low-power, secure, and reliable IoT mesh networks, OpenThread is its open-source counterpart offering flexibility, accessibility, and robust community support. Both aim to provide reliable and secure mesh networking for IoT devices, but OpenThread's open-source nature makes it particularly appealing for flexible development and rapid prototyping.
+
+<p align="center">
+
+| Feature            | Thread                          | OpenThread                       |
+|--------------------|---------------------------------|----------------------------------|
+| **Nature**         | Protocol                        | Open-source implementation       |
+| **Development**    | Maintained by Thread Group      | Released and maintained by Nest (Google) |
+| **Licensing**      | Proprietary, requires membership for full access | Open-source (BSD 3-Clause License) |
+| **Certification**  | Thread-certified                | Thread 1.1 compliant component   |
+| **Platform Support** | Specific to Thread devices      | Flexible, supports various hardware platforms |
+| **Community**      | Industry consortium             | Open-source community, Google support |
+| **Cost**           | Requires membership fees        | Free to use                      |
+| **Use Case**       | General IoT applications        | Flexible development and rapid prototyping |
+
 </p>
 
 
