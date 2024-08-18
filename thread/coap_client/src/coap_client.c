@@ -19,6 +19,32 @@
 #include "ble_utils.h"
 #endif
 
+
+
+
+
+#define RSSI_UPDATE_INTERVAL K_SECONDS(5) // Update interval in seconds
+
+static struct k_timer rssi_timer;
+
+void rssi_timer_handler(struct k_timer *dummy) {
+    get_and_print_rssi();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 LOG_MODULE_REGISTER(coap_client, CONFIG_COAP_CLIENT_LOG_LEVEL);
 
 #define OT_CONNECTION_LED DK_LED1
@@ -126,10 +152,9 @@ static void on_button_changed(uint32_t button_state, uint32_t has_changed)
 void get_and_print_rssi(void){
 	otInstance *instance = openthread_get_default_instance();
 	int8_t rssi;
-	// int8_t avg_rssi;
 	otError error;
 
-	instance = otInstanceInitSingle();
+	// instance = otInstanceInitSingle();
 	if(instance == NULL){
 		LOG_ERR("Failed to get OpenThread instance");
 		return 0;
@@ -138,15 +163,39 @@ void get_and_print_rssi(void){
 	// avg_rssi = otThreadGetParentAverageRssi();
 	// LOG_WRN("Parent Last RSSI: %d dBm\n", rssi);
 
-	error = otThreadGetParentLastRssi(instance, &rssi);
+
+	otThreadLinkInfo linkInfo;
+	// error = otThreadGetParentLastRssi(instance, &rssi);
+	error = otThreadGetParentLastRssi(instance, &linkInfo);
+	
     if (error == OT_ERROR_NONE) {
-        LOG_INF("Parent Last RSSI: %d dBm", rssi);
-		printk("Parent Last RSSI: %d dBm", rssi);
-    } else {
+		rssi = linkInfo.mRss;
+        LOG_INF("Parent Last RSSI: %d dBm \n", rssi);
+		printk("Parent Last RSSI: %d dBm \n", rssi);
+    } 
+	else {
         LOG_ERR("Failed to get RSSI: %d", error);
     }
 
 }
+
+// static void perform_energy_scan(otInstance *instance)
+// {
+//     otError error;
+//     uint32_t scanChannels = OT_RADIO_2P4GHZ_OQPSK_CHANNEL_MASK; 
+//     uint16_t scanDuration = 300; // Duration in milliseconds
+
+//     error = otLinkEnergyScan(instance, scanChannels, scanDuration, handle_energy_scan_result, instance);
+//     if (error != OT_ERROR_NONE)
+//     {
+//         LOG_ERR("Failed to start energy scan: %d", error);
+//     }
+// }
+
+// static void handle_energy_scan_result(otInstance *aInstance, uint8_t aChannel, int8_t aMaxRssi)
+// {
+//     LOG_INF("Energy Scan Result - Channel: %d, Max RSSI: %d dBm", aChannel, aMaxRssi);
+// }
 
 int main(void)
 {
@@ -191,6 +240,9 @@ int main(void)
 #endif /* CONFIG_BT_NUS */
 
 	coap_client_utils_init(on_ot_connect, on_ot_disconnect, on_mtd_mode_toggle);
+
+	k_timer_init(&rssi_timer, rssi_timer_handler, NULL);
+    k_timer_start(&rssi_timer, RSSI_UPDATE_INTERVAL, RSSI_UPDATE_INTERVAL);
 
 	return 0;
 }

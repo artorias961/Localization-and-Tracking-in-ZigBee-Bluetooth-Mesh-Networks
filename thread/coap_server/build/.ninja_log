@@ -732,3 +732,13 @@
 38	225	7432179845537490	C:/Users/artorias961/Desktop/Notas/Project/Thesis/thread/coap_server/build/802154_rpmsg/zephyr/merged_CPUNET.hex	525c6fa2bc616fe2
 48	2366	0	modules/openthread/build/CMakeFiles/print-ot-config	ababbb8711f036d5
 48	2366	0	C:/Users/artorias961/Desktop/Notas/Project/Thesis/thread/coap_server/build/modules/openthread/build/CMakeFiles/print-ot-config	ababbb8711f036d5
+60	260	7432179845537490	modules/nrf/samples/802154_rpmsg_subimage-prefix/src/802154_rpmsg_subimage-stamp/802154_rpmsg_subimage-build	525c6fa2bc616fe2
+60	260	7432179845537490	802154_rpmsg/zephyr/zephyr.hex	525c6fa2bc616fe2
+60	260	7432179845537490	802154_rpmsg/zephyr/zephyr.elf	525c6fa2bc616fe2
+60	260	7432179845537490	802154_rpmsg/zephyr/merged_CPUNET.hex	525c6fa2bc616fe2
+60	260	7432179845537490	C:/Users/artorias961/Desktop/Notas/Project/Thesis/thread/coap_server/build/modules/nrf/samples/802154_rpmsg_subimage-prefix/src/802154_rpmsg_subimage-stamp/802154_rpmsg_subimage-build	525c6fa2bc616fe2
+60	260	7432179845537490	C:/Users/artorias961/Desktop/Notas/Project/Thesis/thread/coap_server/build/802154_rpmsg/zephyr/zephyr.hex	525c6fa2bc616fe2
+60	260	7432179845537490	C:/Users/artorias961/Desktop/Notas/Project/Thesis/thread/coap_server/build/802154_rpmsg/zephyr/zephyr.elf	525c6fa2bc616fe2
+60	260	7432179845537490	C:/Users/artorias961/Desktop/Notas/Project/Thesis/thread/coap_server/build/802154_rpmsg/zephyr/merged_CPUNET.hex	525c6fa2bc616fe2
+66	1671	0	modules/openthread/build/CMakeFiles/print-ot-config	ababbb8711f036d5
+66	1671	0	C:/Users/artorias961/Desktop/Notas/Project/Thesis/thread/coap_server/build/modules/openthread/build/CMakeFiles/print-ot-config	ababbb8711f036d5

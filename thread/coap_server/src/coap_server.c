@@ -10,6 +10,8 @@
 #include <zephyr/net/openthread.h>
 #include <openthread/thread.h>
 #include <openthread/link.h>
+#include <openthread/instance.h>
+#include <openthread/coap.h>
 
 #include "ot_coap_utils.h"
 
@@ -142,35 +144,90 @@ static struct openthread_state_changed_cb ot_state_chaged_cb = { .state_changed_
 									 on_thread_state_changed };
 
 
-void get_and_print_rssi(void){
-	otInstance *instance = openthread_get_default_instance();
-	int8_t rssi;
-	int8_t avg_rssi;
-	otError error;
+// void get_and_print_rssi(void){
+// 	otInstance *instance = openthread_get_default_instance();
+// 	int8_t rssi;
+// 	int8_t avg_rssi;
+// 	otError error;
 
-	instance = otInstanceInitSingle();
-	if(instance == NULL){
-		LOG_ERR("Failed to get OpenThread instance");
-		return 0;
-	}
-	// rssi = otThreadGetParentLastRssi(instance);
-	// avg_rssi = otThreadGetParentAverageRssi();
-	// LOG_WRN("Parent Last RSSI: %d dBm\n", rssi);
+// 	instance = otInstanceInitSingle();
+// 	if(instance == NULL){
+// 		LOG_ERR("Failed to get OpenThread instance");
+// 		return 0;
+// 	}
+// 	// rssi = otThreadGetParentLastRssi(instance);
+// 	// avg_rssi = otThreadGetParentAverageRssi();
+// 	// LOG_WRN("Parent Last RSSI: %d dBm\n", rssi);
 
-	error = otThreadGetParentLastRssi(instance, &rssi);
-    if (error == OT_ERROR_NONE) {
-        LOG_INF("Parent Last RSSI: %d dBm", rssi);
-    } else {
-        LOG_ERR("Failed to get RSSI: %d", error);
-    }
+// 	error = otThreadGetParentLastRssi(instance, &rssi);
+//     if (error == OT_ERROR_NONE) {
+//         LOG_INF("Parent Last RSSI: %d dBm", rssi);
+//     } else {
+//         LOG_ERR("Failed to get RSSI: %d", error);
+//     }
 
-}
+// }
 
+// void get_and_print_rssi(void)
+// {
+//     otInstance *instance = openthread_get_default_instance();
+//     int8_t rssi;
+//     otError error;
+
+//     if (instance == NULL) {
+//         LOG_ERR("Failed to get OpenThread instance");
+//         return;
+//     }
+
+//     error = otThreadGetParentLastRssi(instance, &rssi);
+//     if (error == OT_ERROR_NONE) {
+//         LOG_INF("Parent Last RSSI: %d dBm", rssi);
+//     } else {
+//         LOG_ERR("Failed to get RSSI: %d", error);
+//     }
+// }
+
+
+// void broadcasting_rssi(void){
+// 	otInstance *instance = openthread_get_default_instance();
+    
+   
+// }
+
+// static void handle_rssi_request(void *aContext, otMessage *aMessage, const otMessageInfo *aMessageInfo)
+// {
+//     otInstance *instance = (otInstance *)aContext;
+//     int8_t rssi = otPlatRadioGetRssi(instance);
+
+//     otCoapMessage responseMessage;
+//     otMessageInfo responseInfo;
+
+//     otCoapMessageInitResponse(&responseMessage, aMessage, OT_COAP_TYPE_ACKNOWLEDGMENT, OT_COAP_CODE_CONTENT);
+//     otCoapMessageSetPayloadMarker(&responseMessage);
+
+//     otMessageAppend(&responseMessage, &rssi, sizeof(rssi));
+
+//     memcpy(&responseInfo, aMessageInfo, sizeof(responseInfo));
+
+//     otCoapSendResponse(instance, &responseMessage, &responseInfo);
+// }
+
+// void init_coap_server(otInstance *instance)
+// {
+//     otCoapResource rssiResource = {
+//         .mUriPath = "rssi",
+//         .mHandler = &handle_rssi_request,
+//         .mContext = instance,
+//         .mNext = NULL
+//     };
+
+//     otCoapAddResource(instance, &rssiResource);
+// }
 
 int main(void)
 {
 	int ret;
-	
+
 
 	LOG_INF("Start CoAP-server sample");
 
