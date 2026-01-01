@@ -1,3 +1,55 @@
+# Localization-and-Tracking-in-ZigBee-Bluetooth-Mesh-Networks
+
+
+## Purpose
+This repository contains the research code, experiments, and prototypes developed for my Master’s thesis in Electrical Engineering.
+The goal of this work is to investigate whether human occupancy can be inferred from RF signal behavior, specifically RSSI and link metrics collected from **low-power IEEE 802.15.4–based wireless networks** such as **Zigbee** and **Thread**.
+
+The research explores an alternative to camera-based or privacy-invasive sensing by analyzing network-level signal characteristics already available in embedded wireless systems.
+
+## Research Question
+Can human presence and movement inside an indoor environment be detected or inferred using only RSSI and link behavior from low-power wireless nodes?
+
+## Inspiration and Motivation
+The conceptual inspiration for this work was influenced by the Watch Dogs video game series, which portrays a highly interconnected urban environment where digital infrastructure and wireless networks can be observed and interacted with in real time.
+
+While the game itself is fictional, it raised a real engineering question:
+> To what extent can human presence and behavior be inferred from wireless network characteristics alone?
+This thesis does not attempt to replicate any in-game mechanics. Instead, it translates the high-level idea of ambient network awareness into a real-world research problem using **IEEE 802.15.4 radios, Zigbee, and Thread networks** operating under real physical constraints.
+
+
+## Repository Structure
+
+>⚠️ This repository reflects an exploratory graduate research workflow.
+Some directories are experimental, deprecated, or retained for reference.
+
+```bash
+.
+├── main/
+│   ├── 802154_phy_test/        # IEEE 802.15.4 PHY-level testing
+│   ├── 802154_sniffer/         # Packet and RSSI sniffing experiments
+│   └── ...
+├── thread/
+│   ├── cli/                   # Thread CLI experiments
+│   ├── coap_client/
+│   ├── coap_server/
+│   └── coprocessor/            # RCP / NCP experiments
+├── trash/
+│   ├── zigbee/
+│   ├── router*/
+│   └── random folder/          # Archived exploratory work
+├── README.md                   # This file
+└── thesis.pdf (external)
+
+```
+
+
+
+
+
+
+
+
 # Personal Notes
 [Nordic All Samples](https://docs.nordicsemi.com/bundle/ncs-latest/page/nrf/samples.html)
 
